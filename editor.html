@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="fonts/fonts.css" rel="stylesheet" type="text/css">
+		<link href="global.css" rel="stylesheet" type="text/css">
+		<link href="editor.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		<script src="showdown/dist/showdown.js"></script>
+		<script src="editor.js"></script>
+		
+	</head>
+
+	<body>
+		<section id="editor">
+			<div id="toolbar">
+				<a class="icon" onclick="bold()">
+					<i class="fas fa-bold"></i>
+				</a>
+				<a class="icon" onclick="italic()">
+					<i class="fas fa-italic"></i>
+				</a>
+				<a class="icon" onclick="header()">
+					<i class="fas fa-heading"></i>
+				</a>
+				<a class="separator">|</a>
+				<a class="icon" onclick="list()">
+					<i class="fas fa-list-ul"></i>
+				</a>
+				<a class="icon" onclick="list_ordered()">
+					<i class="fas fa-list-ol"></i>
+				</a>
+				<a class="separator">|</a>
+				<a class="icon" onclick="blockquote()">
+					<i class="fas fa-quote-left"></i>
+				</a>
+				<a class="icon">
+					<i class="fas fa-table"></i>
+				</a>
+				<a class="separator">|</a>
+				<a class="icon" onclick="link()">
+					<i class="fas fa-link"></i>
+				</a>
+				<a class="icon" onclick="image()">
+					<i class="far fa-image"></i>
+				</a>
+			</div>
+
+			<section id="editorBottom">
+				<div id="editorText"><textarea id="editorTextContent" onkeyup="compile()" onChange="compile()"></textarea></div>
+				<div id="editorPreview"><div id="editorPreviewContent"></div></div>
+			</section>
+		</section>
+
+	</body>
+
+
+
+
+
+
+</html>
