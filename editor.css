@@ -53,14 +53,16 @@
 .icon{
 	padding-top:12px;
 	padding-bottom:12px;
-	padding-left:4px;
-	padding-right:4px;
+	padding-left:10px;
+	padding-right:10px;
 }
 
 .icon:hover{
 	border:1px solid #ccc;
 	padding-top:11px;
 	padding-bottom:11px;
+	padding-left:9px;
+	padding-right:9px;
 }
 
 .separator{
