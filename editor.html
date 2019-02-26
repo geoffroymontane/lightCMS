@@ -41,7 +41,7 @@
 				<a class="icon" onclick="link()">
 					<i class="fas fa-link"></i>
 				</a>
-				<a class="icon" onclick="image()">
+				<a class="icon" onclick="showImgPrompt()">
 					<i class="far fa-image"></i>
 				</a>
 			</div>
@@ -50,8 +50,47 @@
 				<div id="editorText"><textarea id="editorTextContent" onkeyup="compile()" onChange="compile()"></textarea></div>
 				<div id="editorPreview"><div id="editorPreviewContent"></div></div>
 			</section>
-		</section>
 
+		<div id="imgPrompt">
+			<form id="imgPromptForm">
+				<div class="imgPromptColumn">
+					<span><b>PC</b></span><br>
+					<span><b>Behavior</b></span><br>
+					<input id="default" type="radio"> as large as possible<br>
+					<input id="full" type="radio"> full width<br>
+					<input id="onequarter" type="radio"> 25% width<br>
+					<input id="onethird" type="radio"> 33% width<br>
+					<input id="onehalf" type="radio"> 50% width<br>
+					<input id="twothirds" type="radio"> 66% width<br>
+					<span><b>Alignment</b></span><br>
+					<input id="left" type="radio"> left<br>
+					<input id="right" type="radio"> right<br>
+					<input id="floatleft" type="radio"> float left<br>
+					<input id="floatright" type="radio"> float right<br>
+					<input id="center" type="radio"> center<br>
+				</div>
+				<div class="imgPromptColumn">
+					<span><b>MOBILE</b></span><br>
+					<span><b>Behavior</b></span><br>
+					<input id="mobile_default" type="radio"> as large as possible<br>
+					<input id="mobile_full" type="radio"> full width<br>
+					<input id="mobile_onequarter" type="radio"> 25% width<br>
+					<input id="mobile_onethird" type="radio"> 33% width<br>
+					<input id="mobile_onehalf" type="radio"> 50% width<br>
+					<input id="mobile_twothirds" type="radio"> 66% width<br>
+					<span><b>Alignment</b></span><br>
+					<input id="mobile_left" type="radio"> left<br>
+					<input id="mobile_right" type="radio"> right<br>
+					<input id="mobile_center" type="radio"> center<br><br>
+					<input id="mobile_nofloat" type="radio"> cancel float<br>
+				</div>
+			</form>
+			<div style="display:flex">
+				<div class="button_red" onclick="hideImgPrompt()">Close</div>
+				<div class="button_green">Insert</div>
+			</div>
+		</div>
+		</section>
 	</body>
 
 
@@ -59,4 +98,4 @@
 
 
 
-</html>
+	</html>

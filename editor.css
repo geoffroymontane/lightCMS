@@ -86,3 +86,57 @@
 	}
 
 }
+
+
+#imgPrompt{
+	position:fixed;
+	z-index:3;
+	background-color:white;
+	border:1px solid #ccc;
+	margin:auto;
+	display:flex;
+	flex-direction:column;
+	visibility:hidden;
+}
+
+#imgPromptForm{
+	display:flex;
+	flex-direction:row;
+}
+
+.imgPromptColumn{
+	margin:32px;
+}
+
+
+.button_red{
+	width:60px;
+	padding:12px;
+	margin:auto;
+	border:1px solid #db2828;
+	color:#db2828;
+  	text-align: center;
+	margin-bottom:16px;
+}
+
+.button_red:hover{
+	background-color:#db2828;
+	border-color:#db2828;
+	color:white;
+}
+
+.button_green{
+	width:60px;
+	padding:12px;
+	margin:auto;
+	border:1px solid #21ba45;
+	color:#21ba45;
+  	text-align: center;
+	margin-bottom:16px;
+}
+
+.button_green:hover{
+	background-color:#21ba45;
+	border-color:#21ba45;
+	color:white;
+}

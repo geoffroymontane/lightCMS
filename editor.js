@@ -116,6 +116,14 @@ function image(){
 	compile();
 }
 
+function showImgPrompt(){
+	document.getElementById("imgPrompt").style.visibility="visible";
+}
+
+function hideImgPrompt(){
+	document.getElementById("imgPrompt").style.visibility="hidden";
+}
+
 window.onload=function(){
 	compile();
 };

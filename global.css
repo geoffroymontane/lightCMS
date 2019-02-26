@@ -24,3 +24,108 @@ h3{
 h3{
 	font-size:1.1em;
 }
+
+/* IMAGES */
+img{
+	margin-top:16px;
+	margin-bottom:16px;
+}
+.img_container{
+	position:relative;
+}
+
+/* IMAGE BEHAVIOR */
+.default{
+	max-width:100%;
+}
+
+.full{
+	width:100%;
+}
+
+.onehalf{
+	max-width:50%;
+}
+
+.onethird{
+	max-width:33%;
+}
+
+.twothirds{
+	max-width:66%;
+}
+
+.onequarter{
+	max-width:25%;
+}
+
+@media screen and (max-width:1000px){
+	.mobile_default{
+		max-width:100%;
+	}
+
+	.mobile_onehalf{
+		max-width:50%;
+	}
+
+	.mobile_onethird{
+		max-width:33%;
+	}
+
+	.mobile_twothirds{
+		max-width:66%;
+	}
+
+	.mobile_onequarter{
+		max-width:25%;
+	}
+
+}
+
+/* IMAGE ALIGNMENT */
+.left{
+	position:absolute;
+	left:0;
+	margin-right:16px;
+}
+
+.right{
+	position:absolute;
+	right:0;
+	margin-left:16px;
+}
+
+.center{
+	display:block;
+	margin:auto;
+}
+
+.floatleft{
+	float:left;
+	margin-right:16px;
+}
+
+.floatright{
+	float:right;
+	margin-left:16px;
+}
+
+@media screen and (max-width:1000px){
+	.mobile_nofloat{
+		float:none;
+	}
+	.mobile_left{
+		position:absolute;
+		left:0;
+	}
+
+	.mobile_right{
+		position:absolute;
+		right:0;
+	}
+
+	.mobile_center{
+		display:block;
+		margin:auto;
+	}
+}
