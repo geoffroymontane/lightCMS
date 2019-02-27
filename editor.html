@@ -12,6 +12,136 @@
 	</head>
 
 	<body>
+		<div id="imgPrompt">
+			<form id="imgPromptForm">
+				<div class="imgPromptColumn">
+					<span><b>PC</b></span><br><br>
+					<span><b>Behavior</b></span><br>
+					<div class="checkbox_container">
+						<input id="default" class="checkbox" type="radio" name="1" checked="checked">
+						<div class="checkmark"></div>
+						as large as possible
+					</div>
+					<div class="checkbox_container">
+						<input id="full" class="checkbox" type="radio" name="1">
+						<div class="checkmark"></div>
+						full width
+					</div>
+					<div class="checkbox_container">
+						<input id="onequarter" class="checkbox" type="radio" name="1">
+						<div class="checkmark"></div>
+						 25% width
+					</div>
+					<div class="checkbox_container">
+						<input id="onethird" class="checkbox" type="radio" name="1">
+						<div class="checkmark"></div>
+						33% width
+					</div>
+					<div class="checkbox_container">
+						<input id="onehalf" class="checkbox" type="radio" name="1">
+						<div class="checkmark"></div>
+						 50% width
+					</div>
+					<div class="checkbox_container">
+						<input id="twothirds" class="checkbox" type="radio" name="1">
+						<div class="checkmark"></div>
+						 66% width
+					</div>
+					<br>
+					<span><b>Alignment</b></span><br>
+					<div class="checkbox_container">
+						<input id="center" class="checkbox" type="radio" name="2" checked="checked">
+						<div class="checkmark"></div>
+						 center
+					</div>
+					<div class="checkbox_container">
+						<input id="left" class="checkbox" type="radio" name="2">
+						<div class="checkmark"></div>
+						 left
+					</div>
+					<div class="checkbox_container">
+						<input id="right" class="checkbox" type="radio" name="2">
+						<div class="checkmark"></div>
+						 right
+					</div>
+					<div class="checkbox_container">
+						<input id="floatleft" class="checkbox" type="radio" name="2">
+						<div class="checkmark"></div>
+						 float left
+					</div>
+					<div class="checkbox_container">
+						<input id="floatright" class="checkbox" type="radio" name="2">
+						<div class="checkmark"></div>
+						 float right
+					</div>
+					<br>
+				</div>
+				<div class="imgPromptColumn">
+					<span><b>MOBILE</b></span><br><br>
+					<span><b>Behavior</b></span><br>
+					<div class="checkbox_container">
+						<input id="mobile_default" class="checkbox" type="radio" name="3" checked="checked">
+						<div class="checkmark"></div>
+						 as large as possible<br>
+					</div>
+					<div class="checkbox_container">
+						<input id="mobile_full" class="checkbox" type="radio" name="3">
+						<div class="checkmark"></div>
+						 full width
+					</div>
+					<div class="checkbox_container">
+						<input id="mobile_onequarter" class="checkbox" type="radio" name="3">
+						<div class="checkmark"></div>
+						 25% width
+					</div>
+					<div class="checkbox_container">
+						<input id="mobile_onethird" class="checkbox" type="radio" name="3">
+						<div class="checkmark"></div>
+						 33% width
+					</div>
+					<div class="checkbox_container">
+						<input id="mobile_onehalf" class="checkbox" type="radio" name="3">
+						<div class="checkmark"></div>
+						 50% width
+					</div>
+					<div class="checkbox_container">
+						<input id="mobile_twothirds" class="checkbox" type="radio" name="3">
+						<div class="checkmark"></div>
+						 66% width
+					</div>
+					<br>
+					<span><b>Alignment</b></span><br>
+					<div class="checkbox_container">
+						<input id="mobile_center" class="checkbox" type="radio" name="4" checked="checked"> 
+						<div class="checkmark"></div>
+						center
+					</div>
+					<div class="checkbox_container">
+						<input id="mobile_left" class="checkbox" type="radio" name="4">
+						<div class="checkmark"></div>
+						 left
+					</div>
+					<div class="checkbox_container">
+						<input id="mobile_right" class="checkbox" type="radio" name="4">
+						<div class="checkmark"></div>
+						 right
+					</div>
+					</br>
+					<div class="checkbox_container">
+						<input id="mobile_nofloat" class="checkbox" type="checkbox" name="5">
+						<div class="checkmark"></div>
+						 cancel float
+					</div>
+					<br>
+				</div>
+			</form>
+			<div style="display:flex">
+				<div class="button_red" onclick="hideImgPrompt()">Close</div>
+				<div class="button_green" onclick="insertImage()">Insert</div>
+			</div>
+		</div>
+		</section>
+
 		<section id="editor">
 			<div id="toolbar">
 				<a class="icon" onclick="bold()">
@@ -51,46 +181,6 @@
 				<div id="editorPreview"><div id="editorPreviewContent"></div></div>
 			</section>
 
-		<div id="imgPrompt">
-			<form id="imgPromptForm">
-				<div class="imgPromptColumn">
-					<span><b>PC</b></span><br>
-					<span><b>Behavior</b></span><br>
-					<input id="default" type="radio"> as large as possible<br>
-					<input id="full" type="radio"> full width<br>
-					<input id="onequarter" type="radio"> 25% width<br>
-					<input id="onethird" type="radio"> 33% width<br>
-					<input id="onehalf" type="radio"> 50% width<br>
-					<input id="twothirds" type="radio"> 66% width<br>
-					<span><b>Alignment</b></span><br>
-					<input id="left" type="radio"> left<br>
-					<input id="right" type="radio"> right<br>
-					<input id="floatleft" type="radio"> float left<br>
-					<input id="floatright" type="radio"> float right<br>
-					<input id="center" type="radio"> center<br>
-				</div>
-				<div class="imgPromptColumn">
-					<span><b>MOBILE</b></span><br>
-					<span><b>Behavior</b></span><br>
-					<input id="mobile_default" type="radio"> as large as possible<br>
-					<input id="mobile_full" type="radio"> full width<br>
-					<input id="mobile_onequarter" type="radio"> 25% width<br>
-					<input id="mobile_onethird" type="radio"> 33% width<br>
-					<input id="mobile_onehalf" type="radio"> 50% width<br>
-					<input id="mobile_twothirds" type="radio"> 66% width<br>
-					<span><b>Alignment</b></span><br>
-					<input id="mobile_left" type="radio"> left<br>
-					<input id="mobile_right" type="radio"> right<br>
-					<input id="mobile_center" type="radio"> center<br><br>
-					<input id="mobile_nofloat" type="radio"> cancel float<br>
-				</div>
-			</form>
-			<div style="display:flex">
-				<div class="button_red" onclick="hideImgPrompt()">Close</div>
-				<div class="button_green">Insert</div>
-			</div>
-		</div>
-		</section>
 	</body>
 
 

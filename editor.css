@@ -90,6 +90,7 @@
 
 #imgPrompt{
 	position:fixed;
+	height:100vh;
 	z-index:3;
 	background-color:white;
 	border:1px solid #ccc;
@@ -97,11 +98,19 @@
 	display:flex;
 	flex-direction:column;
 	visibility:hidden;
+	height:0;
+}
+
+@media screen and (max-width:1000px){
+	#imgPrompt{
+		position:relative;
+	}
 }
 
 #imgPromptForm{
 	display:flex;
 	flex-direction:row;
+	overflow:auto;
 }
 
 .imgPromptColumn{
@@ -140,3 +149,35 @@
 	border-color:#21ba45;
 	color:white;
 }
+
+.checkbox{
+	opacity:0;
+	z-index:3;
+	margin-left:0;
+	margin-right:24px;
+}
+
+.checkbox_container{
+	display:flex;
+	position:relative;
+	margin-top:12px;
+	margin-bottom:12px;
+}
+
+.checkmark{
+	width:20px;
+	height:20px;
+	background-color:#eee;
+	margin-right:16px;
+	margin-left:0px;
+	position:absolute;
+	left:0;
+}
+
+.checkbox_container:hover input ~ .checkmark{
+	background-color:#ccc;
+}
+.checkbox_container input:checked ~ .checkmark{
+	background-color:#2185d0;
+}
+
