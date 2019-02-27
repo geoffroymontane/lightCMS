@@ -63,7 +63,6 @@ img{
 	.mobile_default{
 		max-width:100%;
 	}
-
 	.mobile_onehalf{
 		max-width:50%;
 	}
@@ -79,20 +78,20 @@ img{
 	.mobile_onequarter{
 		max-width:25%;
 	}
-
+	.mobile_full{
+		width:100%;
+	}
 }
 
 /* IMAGE ALIGNMENT */
 .left{
-	position:absolute;
-	left:0;
-	margin-right:16px;
+	display:flex;
+	justify-content:left;
 }
 
 .right{
-	position:absolute;
-	right:0;
-	margin-left:16px;
+	display:flex;
+	justify-content:right;
 }
 
 .center{
@@ -111,21 +110,25 @@ img{
 }
 
 @media screen and (max-width:1000px){
-	.mobile_nofloat{
-		float:none;
+	.mobile_floatleft{
+		float:left;
+	}
+	.mobile_floatright{
+		float:right;
 	}
 	.mobile_left{
-		position:absolute;
-		left:0;
+		display:flex;
+		justify-content:right;
 	}
 
 	.mobile_right{
-		position:absolute;
-		right:0;
+		display:flex;
+		justify-content:left;
 	}
 
 	.mobile_center{
 		display:block;
 		margin:auto;
+		float:none;
 	}
 }

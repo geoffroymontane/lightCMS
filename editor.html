@@ -12,132 +12,155 @@
 	</head>
 
 	<body>
+
+		<div id="colorPrompt">
+			<div id="colorPromptGrid">
+				<div class="color colorPromptIcon" onclick="hideColorPrompt()" style="border:1px solid #db2828"><i class="fas fa-times colorPromptTimes"></i></div>
+				<div class="color" id="red"></div>
+				<div class="color" id="orange"></div>
+				<div class="color" id="yellow"></div>
+				<div class="color" id="olive"></div>
+				<div class="color" id="green"></div>
+				<div class="color" id="teal"></div>
+				<div class="color" id="blue"></div>
+				<div class="color" id="violet"></div>
+				<div class="color" id="purple"></div>
+				<div class="color" id="pink"></div>
+				<div class="color" id="brown"></div>
+				<div class="color" id="grey"></div>
+				<div class="color" id="black"></div>
+			</div>
+		</div>
 		<div id="imgPrompt">
 			<form id="imgPromptForm">
 				<div class="imgPromptColumn">
 					<span><b>PC</b></span><br><br>
-					<span><b>Behavior</b></span><br>
+					<span><b>Largeur</b></span><br>
 					<div class="checkbox_container">
 						<input id="default" class="checkbox" type="radio" name="1" checked="checked">
 						<div class="checkmark"></div>
-						as large as possible
+						Aussi large que possible sans dépasser sa taille réelle
 					</div>
 					<div class="checkbox_container">
 						<input id="full" class="checkbox" type="radio" name="1">
 						<div class="checkmark"></div>
-						full width
+						Aussi large que la page
 					</div>
 					<div class="checkbox_container">
 						<input id="onequarter" class="checkbox" type="radio" name="1">
 						<div class="checkmark"></div>
-						 25% width
+						 25% de la largeur de la page si possible sans dépasser sa taille réelle
 					</div>
 					<div class="checkbox_container">
 						<input id="onethird" class="checkbox" type="radio" name="1">
 						<div class="checkmark"></div>
-						33% width
+						33%
 					</div>
 					<div class="checkbox_container">
 						<input id="onehalf" class="checkbox" type="radio" name="1">
 						<div class="checkmark"></div>
-						 50% width
+						 50%
 					</div>
 					<div class="checkbox_container">
 						<input id="twothirds" class="checkbox" type="radio" name="1">
 						<div class="checkmark"></div>
-						 66% width
+						 66%
 					</div>
 					<br>
-					<span><b>Alignment</b></span><br>
+					<span><b>Alignement</b></span><br>
 					<div class="checkbox_container">
 						<input id="center" class="checkbox" type="radio" name="2" checked="checked">
 						<div class="checkmark"></div>
-						 center
+						Centre
 					</div>
 					<div class="checkbox_container">
 						<input id="left" class="checkbox" type="radio" name="2">
 						<div class="checkmark"></div>
-						 left
+						Gauche
 					</div>
 					<div class="checkbox_container">
 						<input id="right" class="checkbox" type="radio" name="2">
 						<div class="checkmark"></div>
-						 right
+						Droite
 					</div>
 					<div class="checkbox_container">
 						<input id="floatleft" class="checkbox" type="radio" name="2">
 						<div class="checkmark"></div>
-						 float left
+						Flotte à gauche du texte
 					</div>
 					<div class="checkbox_container">
 						<input id="floatright" class="checkbox" type="radio" name="2">
 						<div class="checkmark"></div>
-						 float right
+						Flotte à droite du texte
 					</div>
 					<br>
 				</div>
 				<div class="imgPromptColumn">
 					<span><b>MOBILE</b></span><br><br>
-					<span><b>Behavior</b></span><br>
+					<span><b>Largeur</b></span><br>
 					<div class="checkbox_container">
 						<input id="mobile_default" class="checkbox" type="radio" name="3" checked="checked">
 						<div class="checkmark"></div>
-						 as large as possible<br>
+						Aussi large que possible sans dépasser sa taille réelle
 					</div>
 					<div class="checkbox_container">
 						<input id="mobile_full" class="checkbox" type="radio" name="3">
 						<div class="checkmark"></div>
-						 full width
+						Aussi large que la page
 					</div>
 					<div class="checkbox_container">
 						<input id="mobile_onequarter" class="checkbox" type="radio" name="3">
 						<div class="checkmark"></div>
-						 25% width
+						25% de la largeur de la page si possible sans dépasser sa taille réelle
 					</div>
 					<div class="checkbox_container">
 						<input id="mobile_onethird" class="checkbox" type="radio" name="3">
 						<div class="checkmark"></div>
-						 33% width
+						 33%
 					</div>
 					<div class="checkbox_container">
 						<input id="mobile_onehalf" class="checkbox" type="radio" name="3">
 						<div class="checkmark"></div>
-						 50% width
+						 50%
 					</div>
 					<div class="checkbox_container">
 						<input id="mobile_twothirds" class="checkbox" type="radio" name="3">
 						<div class="checkmark"></div>
-						 66% width
+						 66%
 					</div>
 					<br>
-					<span><b>Alignment</b></span><br>
+					<span><b>Alignement</b></span><br>
 					<div class="checkbox_container">
 						<input id="mobile_center" class="checkbox" type="radio" name="4" checked="checked"> 
 						<div class="checkmark"></div>
-						center
+						Centre
 					</div>
 					<div class="checkbox_container">
 						<input id="mobile_left" class="checkbox" type="radio" name="4">
 						<div class="checkmark"></div>
-						 left
+						Gauche
 					</div>
 					<div class="checkbox_container">
 						<input id="mobile_right" class="checkbox" type="radio" name="4">
 						<div class="checkmark"></div>
-						 right
+						Droite
 					</div>
-					</br>
 					<div class="checkbox_container">
-						<input id="mobile_nofloat" class="checkbox" type="checkbox" name="5">
+						<input id="mobile_floatleft" class="checkbox" type="radio" name="4">
 						<div class="checkmark"></div>
-						 cancel float
+						Flotte à gauche du texte
+					</div>
+					<div class="checkbox_container">
+						<input id="mobile_floatright" class="checkbox" type="radio" name="4">
+						<div class="checkmark"></div>
+						Flotte à droite du texte
 					</div>
 					<br>
 				</div>
 			</form>
 			<div style="display:flex">
-				<div class="button_red" onclick="hideImgPrompt()">Close</div>
-				<div class="button_green" onclick="insertImage()">Insert</div>
+				<div class="button_red" onclick="hideImgPrompt()">Fermer</div>
+				<div class="button_green" onclick="insertImage()">Insérer</div>
 			</div>
 		</div>
 		</section>
@@ -152,6 +175,9 @@
 				</a>
 				<a class="icon" onclick="header()">
 					<i class="fas fa-heading"></i>
+				</a>
+				<a class="icon" onclick="showColorPrompt()">
+					<i class="fas fa-palette"></i>
 				</a>
 				<a class="separator">|</a>
 				<a class="icon" onclick="list()">

@@ -122,24 +122,46 @@ function image(){
 
 function showImgPrompt(){
 	document.getElementById("imgPrompt").style.visibility="visible";
-	document.getElementById("imgPrompt").style.height="100vh";
+	document.getElementById("imgPrompt").style.height="auto";
+	document.getElementById("imgPrompt").focus();
 }
 
 function hideImgPrompt(){
 	document.getElementById("imgPrompt").style.visibility="hidden";
 	document.getElementById("imgPrompt").style.height="0";
+	document.getElementById("editorTextContent").focus();
+}
+
+function showColorPrompt(){
+	document.getElementById("colorPrompt").style.visibility="visible";
+	document.getElementById("colorPrompt").style.height="auto";
+	document.getElementById("colorPrompt").focus();
+}
+
+function hideColorPrompt(){
+	document.getElementById("colorPrompt").style.visibility="hidden";
+	document.getElementById("colorPrompt").style.height="0";
+	document.getElementById("editorTextContent").focus();
 }
 
 function insertImage(){
-	var classes="";
-	var choices=["default","full","onequarter","onethird","onehalf","twothirds",
-	"left","right","floatleft","floatright","center","mobile_default","mobile_full",
+	var classes_img="";
+	var classes_img_container="";
+	var choices_img=["default","full","onequarter","onethird","onehalf","twothirds",
+	"floatleft","floatright","center","mobile_default","mobile_full",
 	"mobile_onequarter","mobile_onethird","mobile_onehalf","mobile_twothirds",
-	"mobile_left","mobile_right","mobile_center","mobile_nofloat"];
+	"mobile_center","mobile_floatleft","mobile_floatright"];
+	var choices_img_container=["left","right","mobile_left","mobile_right"];
 
-	choices.forEach(function(item,index,array){
+	choices_img.forEach(function(item,index,array){
 		if(document.getElementById(item).checked){
-			classes+=item+" ";
+			classes_img+=item+" ";
+		}
+	});
+
+	choices_img_container.forEach(function(item,index,array){
+		if(document.getElementById(item).checked){
+			classes_img_container+=item+" ";
 		}
 	});
 
@@ -147,9 +169,10 @@ function insertImage(){
 				
 	const start = textarea.selectionStart;
 	const end = textarea.selectionEnd;
-
-	textarea.value = textarea.value.slice(0, start) + '<img src="http://' + textarea.value.slice(start, end) + '" class="'+classes+'">' + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + 27 + classes.length;
+	
+	const txt = '<div class="img_container ' + classes_img_container + '"><img src="http://' + textarea.value.slice(start, end) + '" class="'+classes_img+'"></div>';
+	textarea.value = textarea.value.slice(0, start) + txt  + textarea.value.slice(end);
+	textarea.selectionStart = textarea.selectionEnd = start + txt.length + 1;
 
 	textarea.focus();
 	compile();
