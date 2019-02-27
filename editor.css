@@ -116,6 +116,12 @@
 	color:#db2828;
 }
 
+.colorPromptIcon{
+	display:flex;
+	width:32px;
+	height:32px;
+}
+
 .colorPromptIcon:hover .colorPromptTimes{
 	color:white;
 }
@@ -135,6 +141,10 @@
 	display:flex;
 	width:32px;
 	height:32px;
+}
+
+.color:hover{
+	opacity:0.8;
 }
 
 #red{

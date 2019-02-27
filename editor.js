@@ -179,6 +179,21 @@ function insertImage(){
 	hideImgPrompt();
 }
 
+function insertColor(name){
+	var textarea=document.getElementById("editorTextContent");
+				
+	const start = textarea.selectionStart;
+	const end = textarea.selectionEnd;
+	
+	const txt = '<' + name + '>' + textarea.value.slice(start, end) + '</' + name + '>';
+	textarea.value = textarea.value.slice(0, start) + txt  + textarea.value.slice(end);
+	textarea.selectionStart = textarea.selectionEnd = start + name.length + 2;
+
+	textarea.focus();
+	compile();
+	hideColorPrompt();
+}
+
 window.onload=function(){
 	compile();
 };
