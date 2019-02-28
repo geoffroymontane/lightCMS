@@ -89,19 +89,30 @@
 
 }
 
-#colorPrompt{
+
+.modal{
+	display:none;
 	position:fixed;
-	height:auto;
-	z-index:3;
-	background-color:white;
-	border:1px solid #ccc;
-	margin:0;
-	visibility:hidden;
-	height:0;
-	max-height:100vh;
-	max-width:25vw;
 	overflow:auto;
-	padding:0;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	background-color: rgba(0,0,0,0.4); 
+	z-index:3;
+}
+
+.modal-content{
+	background-color:white;
+	margin:auto;
+	width:80%;
+	z-index:3;
+}
+
+@media screen and (max-width:1000px){
+	.modal-content{
+		width:100%;
+	}
 }
 
 #colorPromptGrid{
@@ -109,6 +120,8 @@
 	grid-template-columns: repeat(4, 1fr);
  	grid-gap: 10px;
 	padding:16px;
+	width:200px;
+	height:200px;
 }
 
 .colorPromptTimes{
@@ -128,13 +141,6 @@
 
 .colorPromptIcon:hover{
 	background-color:#db2828;
-}
-
-@media screen and (max-width:1000px){
-	#colorPrompt{
-		position:relative;
-		max-width:100vw;
-	}
 }
 
 .color{
@@ -185,30 +191,6 @@
 }
 #black{
 	background-color:#000;
-}
-
-
-#imgPrompt{
-	position:fixed;
-	height:auto;
-	z-index:3;
-	background-color:white;
-	border:1px solid #ccc;
-	margin:auto;
-	display:flex;
-	flex-direction:column;
-	visibility:hidden;
-	height:0;
-	max-height:100vh;
-	max-width:25vw;
-	overflow:auto;
-}
-
-@media screen and (max-width:1000px){
-	#imgPrompt{
-		position:relative;
-		max-width:100vw;
-	}
 }
 
 #imgPromptForm{

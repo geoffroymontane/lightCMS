@@ -13,8 +13,8 @@
 
 	<body>
 
-		<div id="colorPrompt">
-			<div id="colorPromptGrid">
+		<div id="colorPrompt" class="modal">
+			<div id="colorPromptGrid" class="modal-content">
 				<div class="colorPromptIcon" onclick="hideColorPrompt()" style="border:1px solid #db2828"><span class="colorPromptTimes">&times;</span></div>
 				<div class="color" id="red" onclick="insertColor('red')"></div>
 				<div class="color" id="orange" onclick="insertColor('orange')"></div>
@@ -31,8 +31,8 @@
 				<div class="color" id="black" onclick="insertColor('black')"></div>
 			</div>
 		</div>
-		<div id="imgPrompt">
-			<form id="imgPromptForm">
+		<div id="imgPrompt" class="modal">
+			<form id="imgPromptForm" class="modal-content">
 				<div class="imgPromptColumn">
 					<span><b>PC</b></span><br><br>
 					<span><b>Largeur</b></span><br>
@@ -94,6 +94,7 @@
 						Flotte à droite du texte
 					</div>
 					<br>
+					<div class="button_red" onclick="hideImgPrompt()">Fermer</div>
 				</div>
 				<div class="imgPromptColumn">
 					<span><b>MOBILE</b></span><br><br>
@@ -156,11 +157,10 @@
 						Flotte à droite du texte
 					</div>
 					<br>
+					<div class="button_green" onclick="insertImage()">Insérer</div>
 				</div>
 			</form>
 			<div style="display:flex">
-				<div class="button_red" onclick="hideImgPrompt()">Fermer</div>
-				<div class="button_green" onclick="insertImage()">Insérer</div>
 			</div>
 		</div>
 		</section>
@@ -206,6 +206,7 @@
 				<div id="editorText"><textarea id="editorTextContent" onkeyup="compile()" onChange="compile()"></textarea></div>
 				<div id="editorPreview"><div id="editorPreviewContent"></div></div>
 			</section>
+		</section>
 
 	</body>
 

@@ -121,26 +121,22 @@ function image(){
 }
 
 function showImgPrompt(){
-	document.getElementById("imgPrompt").style.visibility="visible";
-	document.getElementById("imgPrompt").style.height="auto";
+	document.getElementById("imgPrompt").style.display="block";
 	document.getElementById("imgPrompt").focus();
 }
 
 function hideImgPrompt(){
-	document.getElementById("imgPrompt").style.visibility="hidden";
-	document.getElementById("imgPrompt").style.height="0";
+	document.getElementById("imgPrompt").style.display="none";
 	document.getElementById("editorTextContent").focus();
 }
 
 function showColorPrompt(){
-	document.getElementById("colorPrompt").style.visibility="visible";
-	document.getElementById("colorPrompt").style.height="auto";
+	document.getElementById("colorPrompt").style.display="block";
 	document.getElementById("colorPrompt").focus();
 }
 
 function hideColorPrompt(){
-	document.getElementById("colorPrompt").style.visibility="hidden";
-	document.getElementById("colorPrompt").style.height="0";
+	document.getElementById("colorPrompt").style.display="none";
 	document.getElementById("editorTextContent").focus();
 }
 
