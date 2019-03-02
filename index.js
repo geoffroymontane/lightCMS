@@ -11,4 +11,7 @@ function toggleShowMenu(){
 
 function goTo(url){
 	document.getElementById("content").src=url;
+	if(window.innerWidth<=1000){
+		toggleShowMenu();
+	}
 }
