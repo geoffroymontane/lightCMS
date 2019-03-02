@@ -4,10 +4,10 @@
 	session_start();
 	sleep(1);
 
-	/*if(issset($_GET["disconnect"])){
+	if(isset($_GET["disconnect"])){
 		$msg="Déconnecté avec succès";
 		$_SESSION["isConnected"]=0;	
-	}*/
+	}
 
 	if(isset($_POST['email']) && isset($_POST['password'])){
 
