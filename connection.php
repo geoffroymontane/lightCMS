@@ -70,7 +70,7 @@
 			</form>
 			
 			<?php
-			if(isset($_SESSION["isConnected"]) && $_SESSION["isConnected"]!=1){
+			if(strcmp($msg,"")==0){
 				echo "
 				<div id='connectionMsg'>
 					<span id='connectionMsgText'>".$msg."</span>
