@@ -1,12 +1,11 @@
 <?php
 
-	try{
 	include('database.php');
 	session_start();
 	sleep(1);
 
 	if(isset($_POST['email']) && isset($_POST['password'])){
-		$query=$pdo->prepare("SELECT * FROM lightcms_users WHERE email=?");
+		/*$query=$pdo->prepare("SELECT * FROM lightcms_users WHERE email=?");
 		$query->execute(array($_POST['email']));
 		$tab=$query->fetchAll();
 		
@@ -18,11 +17,7 @@
 		}
 		else{
 			$_SESSION["isConnected"]=0;	
-		}
-	}
-	}
-	catch(Exception $e){
-		die($e);
+		}*/
 	}
 ?>
 
