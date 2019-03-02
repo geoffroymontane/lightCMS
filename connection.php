@@ -7,9 +7,9 @@
 		$query->execute(array("test"));
 		$tab=$query->fetchAll();
 
-	/*if(isset($_POST['email']) && isset($_POST['password'])){
+	if(isset($_POST['email']) && isset($_POST['password'])){
 		
-		if(password_verify($_POST['password'],$query[0]["password"])){
+		/*if(password_verify($_POST['password'],$query[0]["password"])){
 			$_SESSION["isConnected"]=1;	
 			$_SESSION["email"]=$_POST["email"];	
 			header("Location: index.php");
@@ -17,8 +17,8 @@
 		}
 		else{
 			$_SESSION["isConnected"]=0;	
-		}
-	}*/
+		}*/
+	}
 ?>
 
 <html>
