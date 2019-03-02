@@ -1,0 +1,79 @@
+#filePicker{
+	opacity:0;
+}
+
+#addImageText{
+	text-align:center;
+	margin:32px;
+}
+
+.button_add{
+	width:60px;
+	padding:12px;
+	margin:auto;
+	border:1px solid #21ba45;
+	color:#21ba45;
+  	text-align: center;
+	margin-bottom:16px;
+}
+
+.button_add:hover{
+	background-color:#21ba45;
+	border-color:#21ba45;
+	color:white;
+}
+
+.button_select{
+	display:block;
+	width:100px;
+	padding:12px;
+	margin:auto;
+	border:1px solid #21ba45;
+	color:#21ba45;
+	margin-bottom:32px;
+}
+
+.button_select:hover{
+	background-color:#21ba45;
+	border-color:#21ba45;
+	color:white;
+}
+
+.modal{
+	display:none;
+	position:fixed;
+	overflow:auto;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	background-color: rgba(0,0,0,0.4); 
+	z-index:3;
+}
+
+.modal-content{
+	display:flex;
+	flex-direction:column;
+	background-color:white;
+	margin:auto;
+	width:80%;
+	z-index:3;
+}
+
+.closeIcon{
+	display:flex;
+	color:#db2828;
+	width:32px;
+	height:32px;
+	border:1px solid #db2828;
+	margin:8px;
+}
+
+.closeIcon:hover{
+	color:white;
+	background-color:#db2828;
+}
+
+.closeIconTimes{
+	margin:auto;
+}

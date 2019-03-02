@@ -1,0 +1,27 @@
+
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="fonts/fonts.css" rel="stylesheet" type="text/css">
+		<link href="global.css" rel="stylesheet" type="text/css">
+		<link href="images.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		<script src="images.js"></script>
+		
+	</head>
+
+	<body>
+		<div class="button_add" onclick="showAddImage()">Ajouter</div>
+		<div class="modal" id="addImage">
+			<div class="modal-content">
+				<div class="closeIcon" onclick="hideAddImage()"><div class="closeIconTimes">&times;</div></div>
+				<div id="addImageText">Sélectionner une image afin de la mettre en ligne</div>
+				<label class="button_select" for="filePicker">Sélectionner</label>
+			</div>
+			<input type="file" id="filePicker" name="filePicker">
+		</div>
+
+	</body>
+
+</html>
