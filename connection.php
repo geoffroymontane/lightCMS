@@ -21,7 +21,7 @@
 		}
 	}
 	}
-	catch($e){
+	catch(Exception $e){
 		die($e);
 	}
 ?>
