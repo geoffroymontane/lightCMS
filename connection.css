@@ -3,9 +3,9 @@
 
 #connectionForm{
 	padding-top:32px;
+	padding-bottom:32px;
 	background-color:white;
 	width:300px;
-	height:350px;
 }
 
 #connectionContent{
@@ -52,7 +52,7 @@ label{
 	border:1px solid #21ba45;
 	color:#21ba45;
   	text-align: center;
-	margin-bottom:16px;
+	margin-bottom:32;
 }
 
 .button:hover{
