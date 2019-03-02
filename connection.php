@@ -41,10 +41,15 @@
 			function submit(){
 				document.getElementById('connectionForm').submit();
 			}	
+			function keyup(event){
+				if(event.keyCode==13){
+					submit();
+				}
+			}
 		</script>
 	</head>
 
-	<body id="connectionBody">
+	<body id="connectionBody" onkeyup="keyup(event)">
 
 		<div id="connectionContent">
 			<form action='connection.php' method='post' id='connectionForm'>
