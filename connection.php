@@ -67,8 +67,8 @@
 			<?php
 			if(isset($_SESSION["isConnected"]) && $_SESSION["isConnected"]!=1){
 				echo "
-				<div id='connectionMsg'>".$msg."
-					<span id='connectionMsgText'></span>
+				<div id='connectionMsg'>
+					<span id='connectionMsgText'>".$msg."</span>
 				</div>";
 			}
 			?>
