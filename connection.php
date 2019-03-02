@@ -1,4 +1,6 @@
 <?php
+
+	try{
 	include('database.php');
 	session_start();
 	sleep(1);
@@ -17,6 +19,10 @@
 		else{
 			$_SESSION["isConnected"]=0;	
 		}
+	}
+	}
+	catch($e){
+		die($e);
 	}
 ?>
 
