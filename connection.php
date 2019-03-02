@@ -33,6 +33,7 @@
 	<head>
 		
 		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link href="fonts/fonts.css" rel="stylesheet" type="text/css">
 		<link href="global.css" rel="stylesheet" type="text/css">
 		<link href="connection.css" rel="stylesheet" type="text/css">
