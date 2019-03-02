@@ -70,7 +70,7 @@
 			</form>
 			
 			<?php
-			if(strcmp($msg,"")==0){
+			if(strcmp($msg,"")!=0){
 				echo "
 				<div id='connectionMsg'>
 					<span id='connectionMsgText'>".$msg."</span>
