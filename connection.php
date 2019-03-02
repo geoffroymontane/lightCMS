@@ -4,6 +4,11 @@
 	session_start();
 	sleep(1);
 
+	if(issset($_GET["disconnect"])){
+		$msg="Déconnecté avec succès";
+		$_SESSION["isConnected"]=0;	
+	}
+
 	if(isset($_POST['email']) && isset($_POST['password'])){
 
 		$query=$pdo->prepare("SELECT * FROM lightcms_users WHERE email=?");
@@ -18,6 +23,7 @@
 		}
 		else{
 			$_SESSION["isConnected"]=0;	
+			$msg="Erreur d'identification";
 		}
 	}
 ?>
@@ -61,8 +67,8 @@
 			<?php
 			if(isset($_SESSION["isConnected"]) && $_SESSION["isConnected"]!=1){
 				echo "
-				<div id='connectionMsg'>
-					<span id='connectionMsgText'>Erreur d'identification</span>
+				<div id='connectionMsg'>".$msg."
+					<span id='connectionMsgText'></span>
 				</div>";
 			}
 			?>
