@@ -22,6 +22,8 @@ body{
 	left:0;
 	width:100%;
 	background-color:#222;
+	z-index:2;
+	height:55px;
 }
 
 #topbarMenu{
@@ -30,8 +32,7 @@ body{
 	padding:16px;
 }
 #topbarMenu:hover{
-	color:#222;
-	background-color:white;
+	color:#db2828;
 }
 
 #content{
@@ -46,7 +47,7 @@ body{
 	#menu{
 		display:none;
 		position:fixed;
-		top:50;
+		top:55;
 		left:0;
 		width:100%;
 	}
@@ -93,4 +94,10 @@ iframe{
 	height:100%;
 	border:none;
 
+}
+
+@media screen and (max-width:1000px){
+	iframe{
+		height:calc(100% - 50px);
+	}
 }

@@ -33,7 +33,8 @@
 		</div>
 		<div id="imgPrompt" class="modal">
 			<form id="imgPromptForm" class="modal-content">
-				<div class="imgPromptColumn">
+				<iframe id="imgPicker" src="images.php"></iframe>
+				<div class="imgPromptColumn" id="imgPromptColumn1">
 					<span><b>PC</b></span><br><br>
 					<span><b>Largeur</b></span><br>
 					<div class="checkbox_container">
@@ -96,7 +97,7 @@
 					<br>
 					<div class="button_red" onclick="hideImgPrompt()">Fermer</div>
 				</div>
-				<div class="imgPromptColumn">
+				<div class="imgPromptColumn" id="imgPromptColumn2">
 					<span><b>MOBILE</b></span><br><br>
 					<span><b>Largeur</b></span><br>
 					<div class="checkbox_container">

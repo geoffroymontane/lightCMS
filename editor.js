@@ -1,3 +1,5 @@
+var selectedImage="";
+
 function compile(){
 	var markdown=document.getElementById("editorTextContent").value;
 
@@ -122,11 +124,25 @@ function image(){
 
 function showImgPrompt(){
 	document.getElementById("imgPrompt").style.display="block";
+	document.getElementById("imgPicker").style.display="block";
+	document.getElementById("imgPromptColumn1").style.display="none";
+	document.getElementById("imgPromptColumn2").style.display="none";
+	document.getElementById("imgPicker").focus();
+}
+
+function showImgPrompt_(){
+	document.getElementById("imgPrompt").style.display="block";
+	document.getElementById("imgPicker").style.display="none";
+	document.getElementById("imgPromptColumn1").style.display="block";
+	document.getElementById("imgPromptColumn2").style.display="block";
 	document.getElementById("imgPrompt").focus();
 }
 
 function hideImgPrompt(){
 	document.getElementById("imgPrompt").style.display="none";
+	document.getElementById("imgPicker").style.display="block";
+	document.getElementById("imgPromptColumn1").style.display="none";
+	document.getElementById("imgPromptColumn2").style.display="none";
 	document.getElementById("editorTextContent").focus();
 }
 
@@ -166,13 +182,18 @@ function insertImage(){
 	const start = textarea.selectionStart;
 	const end = textarea.selectionEnd;
 	
-	const txt = '<div class="img_container ' + classes_img_container + '"><img src="http://' + textarea.value.slice(start, end) + '" class="'+classes_img+'"></div>';
+	const txt = '<div class="img_container ' + classes_img_container + '"><img src="images/' + selectedImage + '" class="'+classes_img+'"></div>';
 	textarea.value = textarea.value.slice(0, start) + txt  + textarea.value.slice(end);
 	textarea.selectionStart = textarea.selectionEnd = start + txt.length + 1;
 
 	textarea.focus();
 	compile();
 	hideImgPrompt();
+}
+
+function selectImage(img){
+	selectedImage=img;
+	showImgPrompt_();
 }
 
 function insertColor(name){

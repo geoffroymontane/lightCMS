@@ -5,6 +5,7 @@
 #addImageText{
 	text-align:center;
 	margin:32px;
+	color:#777;
 }
 
 .button_add{
@@ -15,12 +16,21 @@
 	color:#21ba45;
   	text-align: center;
 	margin-bottom:16px;
+	margin-top:16px;
+	margin-left:20px;
 }
 
 .button_add:hover{
 	background-color:#21ba45;
 	border-color:#21ba45;
 	color:white;
+}
+
+@media screen and (max-width:1000px){
+	.button_add{
+		margin-left:auto;
+		margin-bottom:auto;
+	}
 }
 
 .button_select{
@@ -76,4 +86,43 @@
 
 .closeIconTimes{
 	margin:auto;
+}
+
+#imagesList{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:start;
+}
+
+.image_container{
+	width:300px;
+	min-height:0;
+	min-width:0;
+	margin:20px;
+	flex-shrink: 0;
+}
+
+.image{
+	display:block;
+	width:300px;
+	height:auto;
+	margin:auto;
+}
+
+.image:hover{
+	opacity:0.7;
+}
+
+@media screen and (max-width:1000px){
+	.image_container{
+		width:100%;
+		min-width:100%;
+		margin-left:auto;
+		margin-right:auto;
+		margin-top:20px;
+		margin-bottom:20px;
+	}
+	.image{
+		width:80%;
+	}
 }

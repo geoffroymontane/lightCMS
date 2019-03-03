@@ -29,7 +29,7 @@
 				<i class="fas fa-edit"></i>
 				<span class="menuItemText">Editeur</span>
 			</a>
-			<a class="menuItem" onclick='goTo("images.html")'>
+			<a class="menuItem" onclick='goTo("images.php")'>
 				<i class="fas fa-images"></i>
 				<span class="menuItemText">Images</span>
 			</a>
