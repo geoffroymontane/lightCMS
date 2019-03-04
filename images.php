@@ -1,3 +1,13 @@
+<?php
+	session_start();
+	if(isset($_SESSION["isConnected"]) && $_SESSION["isConnected"]==1){
+		include("database.php");
+
+		$query=$pdo->prepare("SELECT * FROM lightcms_images ORDER BY date DESC");
+		$query->execute();
+		$tab=$query->fetchAll();
+	}
+?>
 
 <html>
 	<head>
@@ -10,7 +20,6 @@
 		<script src="images.js"></script>
 		
 	</head>
-
 	<body>
 		<div class="button_add" onclick="showAddImage()">Ajouter</div>
 		<div class="modal" id="addImage">
@@ -19,9 +28,20 @@
 				<div id="addImageText">Sélectionner une image afin de la mettre en ligne</div>
 				<label class="button_select" for="filePicker">Sélectionner</label>
 			</div>
-			<input type="file" id="filePicker" name="filePicker">
+			<form id="fileForm" action="uploadImages.php" target="iframe" method="post" enctype="multipart/form-data">
+				<input type="file" id="filePicker" name="myfile" onchange="startUpload()">
+			</form>
+			<iframe style="display:none;" name="iframe"></iframe>
 		</div>
-
+		<div id="imagesList">
+			<?php
+				if(isset($_SESSION["isConnected"]) && $_SESSION["isConnected"]==1){
+					for($i=0;$i<count($tab);$i++){
+						echo "<div class='image_container'><img onclick='parent.selectImage(\"".$tab[$i]["id"].".".$tab[$i]["extension"]."\")' src='images/".$tab[$i]["id"].".".$tab[$i]["extension"]."' class='image'></div>";
+					}
+				}
+			?>
+		</div>
 	</body>
 
 </html>
