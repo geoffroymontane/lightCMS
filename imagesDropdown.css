@@ -1,0 +1,65 @@
+#filePicker{
+	opacity:0;
+}
+
+#addImageText{
+	text-align:center;
+	margin:32px;
+	color:#777;
+}
+
+.button_select{
+	display:block;
+	width:60px;
+	padding:12px;
+	margin:auto;
+	border:1px solid #21ba45;
+	color:#21ba45;
+	margin-bottom:16px;
+	margin-top:16px;
+}
+
+.button_select:hover{
+	background-color:#21ba45;
+	border-color:#21ba45;
+	color:white;
+}
+
+#imagesList{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:start;
+}
+
+.image_container{
+	width:300px;
+	min-height:0;
+	min-width:0;
+	margin:20px;
+	flex-shrink: 0;
+}
+
+.image{
+	display:block;
+	width:300px;
+	height:auto;
+	margin:auto;
+}
+
+.image:hover{
+	opacity:0.7;
+}
+
+@media screen and (max-width:800px){
+	.image_container{
+		width:100%;
+		min-width:100%;
+		margin-left:auto;
+		margin-right:auto;
+		margin-top:20px;
+		margin-bottom:20px;
+	}
+	.image{
+		width:80%;
+	}
+}

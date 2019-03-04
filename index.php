@@ -33,7 +33,7 @@
 				<i class="fas fa-images"></i>
 				<span class="menuItemText">Images</span>
 			</a>
-			<a class="menuItem" href="editor.html">
+			<a class="menuItem">
 				<i class="fas fa-chart-bar"></i>
 				<span class="menuItemText">Statistiques</span>
 			</a>
