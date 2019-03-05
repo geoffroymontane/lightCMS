@@ -25,7 +25,7 @@
 			</a>
 		</div>
 		<div id="menu">
-			<a class="menuItem" onclick='goTo("editor.html")'>
+			<a class="menuItem" onclick='goTo("contents.php")'>
 				<i class="fas fa-edit"></i>
 				<span class="menuItemText">Editeur</span>
 			</a>

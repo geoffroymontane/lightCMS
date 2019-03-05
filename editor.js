@@ -2,10 +2,15 @@ var selectedImage="";
 
 function compile(){
 	var markdown=document.getElementById("editorTextContent").value;
-
-	// Showdown compilation
 	var html=new showdown.Converter().makeHtml(markdown);
 	document.getElementById("editorPreviewContent").innerHTML=html;
+}
+
+function save(){
+	var markdown=document.getElementById("editorTextContent").value;
+	var html=new showdown.Converter().makeHtml(markdown);
+	document.getElementById("html").value=html;
+	document.getElementById("editorSaveForm").submit();
 }
 
 function insertAtCursor (input, textToInsert) {

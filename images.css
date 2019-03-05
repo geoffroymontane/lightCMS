@@ -70,6 +70,12 @@
 	z-index:3;
 }
 
+@media screen and (max-width:1000px){
+	.modal-content{
+		width:100%;
+	}
+}
+
 .closeIcon{
 	display:flex;
 	color:#db2828;

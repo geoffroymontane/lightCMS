@@ -3,15 +3,28 @@
 
 #connectionForm{
 	padding-top:32px;
-	padding-bottom:16px;
+	padding-bottom:8px;
 	background-color:white;
 	width:300px;
+	border-radius:0px 0px 12px 12px;
 }
 
 #connectionContent{
-
 	margin:auto;
+}
 
+#connectionFormTitle{
+	font-size:14px;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	font-weight:600;
+	margin:auto;
+	border-radius:12px 12px 0px 0px;
+	margin-bottom:0;
+	background-color:#222;
+	color:white;
+	width:300px;
 }
 
 #connectionBody{
@@ -21,59 +34,95 @@
 	background-color:#f1f1f1;
 	width:100%;
 	height:100%;
+	background: #aaacc5; /* fallback for old browsers */
+  	background: -webkit-linear-gradient(to right, #e8a5ba,#aad8e7);
+  	background: linear-gradient(to right, #e8a5ba, #aad8e7);
 }
 
 .connectionFormInput{
+	display:block;
+	margin:0;
+	padding:0;
+	position:relative;
 	width:100%;
+	margin-top:10px;
+	margin-bottom:50px;
 }
 input{
 	width:200px;
-	height:40px;
+	height:34px;
 	margin-left:50px;
 	margin-right:50px;
 	margin-top:0px;
-	margin-bottom:20px;
+	border:none;
+	border-bottom:1px solid #ccc;
+}
 
+input:focus,input:not(:placeholder-shown){
+	outline:none;
+	border-bottom:1px solid #2185d0;
 }
 
 label{
+	position:absolute;
+	cursor:text;
+	top:4px;
+	left:0;
+	margin:0;
+	padding:0;
 	margin-left:50px;
 	margin-right:50px;
-	margin-bottom:0px;
-	margin-top:20px;
 	color:#777;
 }
 
+input:not(:placeholder-shown) ~label{
+	outline:none;
+	color:#2185d0;
+	top:-20px;
+}
+
+input:focus ~label{
+	outline:none;
+	color:#2185d0;
+	top:-20px;
+}
 
 .button{
-	width:80px;
-	padding:12px;
+	display:inline-block;
+	padding-left:12px;
+	padding-right:12px;
+	padding-top:10px;
+	padding-bottom:10px;
 	margin:auto;
-	margin-top:32px;
-	border:1px solid #21ba45;
-	color:#21ba45;
+	border:1px solid #db2828;
+	border-radius:6px;
+	color:#db2828;
   	text-align: center;
-	margin-bottom:32;
+	margin-bottom:16px;
+	margin-top:16px;
 }
 
 .button:hover{
-	background-color:#21ba45;
-	border-color:#21ba45;
+	background-color:#db2828;
+	border-color:#db2828;
 	color:white;
 }
 
+.button_container{
+	display:block;
+}
+
 #connectionMsg{
+	height:16px;
+	text-align:center;
+	line-height:16px;
 	color:#db2828;
 	background-color:white;
-	border-left:1px solid #db2828;
+	border:1px solid #db2828;
+	border-radius:6px;
 	width:300px;
 	margin:auto;
 	margin-top:32px;
 	padding-top:12px;
 	padding-bottom:12px;
-}
-
-#connectionMsgText{
-	margin-left:12px;
-	width:288px;
 }

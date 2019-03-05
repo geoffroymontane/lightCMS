@@ -53,19 +53,22 @@
 	<body id="connectionBody" onkeyup="keyup(event)">
 
 		<div id="connectionContent">
+			<div id="connectionFormTitle">Connexion</div>
 			<form action='connection.php' method='post' id='connectionForm'>
+				<label for="email" class='connectionFormInput'>
+					<input id="email" name="email" placeholder="&nbsp;"/>
+					<label for="email">Email</label>
+				</label>
+				<label for="password" class='connectionFormInput'>
+					<input id="password" type="password" name="password" placeholder="&nbsp;"/>
+					<label for="password">Mot de passe</label>
+				</label>
 
-				<div class='connectionFormInput'>
-					<label>Email</label>
-					<input type="email" name="email"/>
-				</div>
-				<div class='connectionFormInput'>
-					<label>Mot de passe</label>
-					<input type="password" name="password"/>
-				</div>
-
-				<div id='submit' class='button' onclick="submit();">
-				Connexion
+				<div class='button_container' style="text-align:center">
+					<div id='submit' class='button' onclick="submit();">
+						<i class="fas fa-sign-in-alt"></i>
+						&nbsp;Connexion
+					</div>
 				</div>
 
 			</form>
@@ -74,7 +77,7 @@
 			if(strcmp($msg,"")!=0){
 				echo "
 				<div id='connectionMsg'>
-					<span id='connectionMsgText'>".$msg."</span>
+					".$msg."
 				</div>";
 			}
 			?>

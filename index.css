@@ -39,6 +39,18 @@ body{
 	position:relative;
 }
 
+#logo{
+	display:block;
+	color:white;
+	font-size:24px;
+	line-height:70px;
+	text-align:center;
+	height:70px;
+	background: #e55d87; /* fallback for old browsers */
+  	background: -webkit-linear-gradient(to right, #e68ca8, #8ccee4); /* Chrome 10-25, Safari 5.1-6 */
+  	background: linear-gradient(to right, #e68ca8, #8ccee4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 @media screen and (max-width:1000px){
 	body{
 		display:block;
