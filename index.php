@@ -43,7 +43,7 @@
 			</a>
 		</div>
 		
-		<iframe src="editor.html" id="content"></iframe>
+		<iframe src="contents.php" id="content"></iframe>
 	</body>
 
 

@@ -9,6 +9,8 @@ function compile(){
 function save(){
 	var markdown=document.getElementById("editorTextContent").value;
 	var html=new showdown.Converter().makeHtml(markdown);
+	var title=document.getElementById("title").value;
+	document.getElementById("titleEditorSaveForm").value=title;
 	document.getElementById("html").value=html;
 	document.getElementById("editorSaveForm").submit();
 }
