@@ -51,6 +51,21 @@ function italic(){
 	compile();
 }
 
+function align(direction){
+	var textarea=document.getElementById("editorTextContent");
+				
+	const start = textarea.selectionStart;
+	const end = textarea.selectionEnd;
+
+	textarea.value = textarea.value.slice(0, start) + '<' + direction + '>' + textarea.value.slice(start, end) + '</' + direction + '>' + textarea.value.slice(end);
+	textarea.selectionStart = textarea.selectionEnd = start + 2 + direction.length;
+
+	textarea.focus();
+	compile();
+}
+
+
+
 function header(){
 	var textarea=document.getElementById("editorTextContent");
 				

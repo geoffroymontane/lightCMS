@@ -259,6 +259,19 @@
 					<i class="fas fa-palette"></i>
 				</a>
 				<a class="separator">|</a>
+				<a class="icon" onclick="align('right')">
+					<i class="fas fa-align-right"></i>
+				</a>
+				<a class="icon" onclick="align('center')">
+					<i class="fas fa-align-center"></i>
+				</a>
+				<a class="icon" onclick="align('left')">
+					<i class="fas fa-align-left"></i>
+				</a>
+				<a class="icon" onclick="align('justify')">
+					<i class="fas fa-align-justify"></i>
+				</a>
+				<a class="separator">|</a>
 				<a class="icon" onclick="list()">
 					<i class="fas fa-list-ul"></i>
 				</a>

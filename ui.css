@@ -1,0 +1,173 @@
+/*
+
+This file contains all styles used by the UI
+when they are supposed to be shared between
+different pages.
+
+*/
+
+.button_red{
+	display:inline-block;
+	padding-left:12px;
+	padding-right:12px;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin:auto;
+	border:1px solid #db2828;
+	border-radius:6px;
+	color:#db2828;
+  	text-align: center;
+	margin-bottom:16px;
+	margin-top:16px;
+	text-decoration:none;
+}
+
+.button_red:hover{
+	background-color:#db2828;
+	border-color:#db2828;
+	color:white;
+}
+
+.button_grey{
+	display:inline-block;
+	padding-left:12px;
+	padding-right:12px;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin:auto;
+	border:1px solid #222;
+	border-radius:6px;
+	color:#222;
+  	text-align: center;
+	margin-bottom:16px;
+	margin-top:16px;
+	text-decoration:none;
+}
+
+.button_grey:hover{
+	background-color:#222;
+	border-color:#222;
+	color:white;
+}
+
+.button_container{
+	display:block;
+}
+
+table{
+	border-collapse:collapse;
+	width:100%;
+	margin:auto;
+}
+
+td,th{
+	cursor:pointer;
+	border:1px solid #ccc;
+	padding:0;
+	margin:0;
+	text-align:left;
+	height:60px;
+	padding:8px;
+	border:1px solid #ccc;
+}
+
+th{
+	background-color:#222;
+	color:white;
+	font-weight:500;
+	border:none;
+}
+
+.trFirst{
+	border:none;
+}
+
+.thFirst{
+	height:50px;
+}
+
+.thLeft{
+	border-radius:6px 0px 0px 0px;
+}
+
+.thRight{
+	border-radius:0px 6px 0px 0px;
+}
+
+tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+/* CUSTOM TEXT INPUT */
+
+.textInput{
+	width:100%;
+	height:34px;
+	margin-top:0px;
+	border:none;
+	border-bottom:1px solid #ccc;
+}
+
+.textInput:focus,.textInput:not(:placeholder-shown){
+	outline:none;
+	border-bottom:1px solid #2185d0;
+}
+
+.textInputLabel{
+	position:absolute;
+	cursor:text;
+	top:4px;
+	left:0;
+	margin:0;
+	padding:0;
+	color:#777;
+}
+
+.textInput:not(:placeholder-shown) ~.textInputLabel{
+	outline:none;
+	color:#2185d0;
+	top:-20px;
+}
+
+.textInput:focus ~.textInputLabel{
+	outline:none;
+	color:#2185d0;
+	top:-20px;
+}
+
+.textInputContainer{
+	display:block;
+	margin:0;
+	padding:0;
+	position:relative;
+	width:100%;
+	margin-top:16px;
+	margin-bottom:16px;
+}
+
+/* CUSTOM TEXT AREA */
+
+
+.textareaInputLabel{
+	color:#ccc;
+}
+
+.textareaInput{
+	margin-top:6px;
+	resize:none;
+	width:100%;
+	border:none;
+	border-top:1px solid #ccc;
+}
+
+.textareaInput:focus,.textareaInput:not(:placeholder-shown){
+	border-top:1px solid #2185d0;
+}
+
+.textareaInput:focus ~.textareaInputLabel{
+	color:#2185d0;
+}
+
+.textareaInput:not(:placeholder-shown) ~.textareaInputLabel{
+	color:#2185d0;
+}

@@ -213,3 +213,26 @@ black{
 .black{
 	color:#000;
 }
+
+
+/* TEXT ALIGNMENT */
+
+center{
+	display:block;
+	text-align:center;
+}
+
+left{
+	display:block;
+	text-align:left;
+}
+
+right{
+	display:block;
+	text-align:right;
+}
+
+justify{
+	display:block;
+	text-align:justify;
+}
