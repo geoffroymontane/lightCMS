@@ -16,17 +16,24 @@
 		<link href="fonts/fonts.css" rel="stylesheet" type="text/css">
 		<link href="global.css" rel="stylesheet" type="text/css">
 		<link href="images.css" rel="stylesheet" type="text/css">
+		<link href="ui.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<script src="images.js"></script>
 		
 	</head>
 	<body>
-		<div class="button_add" onclick="showAddImage()">Ajouter</div>
+		<div class="button_red" style="margin-left:16px;" onclick="showAddImage()">
+			<i class="fas fa-plus"></i>
+			&nbsp;Ajouter
+		</div>
 		<div class="modal" id="addImage">
 			<div class="modal-content">
 				<div class="closeIcon" onclick="hideAddImage()"><div class="closeIconTimes">&times;</div></div>
 				<div id="addImageText">Sélectionner une image afin de la mettre en ligne</div>
-				<label class="button_select" for="filePicker">Sélectionner</label>
+				<label class="button_red" for="filePicker">
+					<i class="far fa-images"></i>
+					&nbsp;Sélectionner
+				</label>
 			</div>
 			<form id="fileForm" action="uploadImages.php" target="iframe" method="post" enctype="multipart/form-data">
 				<input type="file" id="filePicker" name="myfile" onchange="startUpload()">

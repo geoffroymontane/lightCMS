@@ -35,12 +35,13 @@
 			
 			$id=$_GET["id"];
 			$title=$tab[0]["name"];
+			$date=$tab[0]["date"];
 			$markdown=$tab[0]["markdown"];
 		}
 		//New content
 		else{
 			$id="none";
-			$title="Nouveau contenu";
+			$title="";
 			$markdown="";
 		}
 	}
@@ -53,6 +54,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link href="fonts/fonts.css" rel="stylesheet" type="text/css">
 		<link href="global.css" rel="stylesheet" type="text/css">
+		<link href="ui.css" rel="stylesheet" type="text/css">
 		<link href="editor.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<script src="showdown/dist/showdown.js"></script>
@@ -143,7 +145,10 @@
 						Flotte à droite du texte
 					</div>
 					<br>
-					<div class="button_red" onclick="hideImgPrompt()">Fermer</div>
+					<div class="button_grey" onclick="hideImgPrompt()">
+						<i class="fas fa-ban"></i>
+						&nbsp;Fermer
+					</div>
 				</div>
 				<div class="imgPromptColumn" id="imgPromptColumn2">
 					<span><b>MOBILE</b></span><br><br>
@@ -197,7 +202,7 @@
 					</div>
 					<div class="checkbox_container">
 						<input id="mobile_floatleft" class="checkbox" type="radio" name="4">
-						<div class="checkmark"></div>
+						<div class="checkmark"><i class="fas fa-check"></i></div>
 						Flotte à gauche du texte
 					</div>
 					<div class="checkbox_container">
@@ -206,18 +211,40 @@
 						Flotte à droite du texte
 					</div>
 					<br>
-					<div class="button_green" onclick="insertImage()">Insérer</div>
+					<div class="button_red" onclick="insertImage()">
+						<i class="fas fa-plus"></i>
+						&nbsp;Insérer
+					</div>
 				</div>
 			</form>
 			<div style="display:flex">
 			</div>
 		</div>
 		</section>
-		<div style="margin-left:16px;">
-			<b>ID : </b> <?php echo $id;?>
-			<input id="title" value="<?php echo $title; ?>"/>
-		</div>
 		<section id="editor">
+			<div id="metadata">
+				<div id="metadata_1">
+					<label for="title" class='textInputContainer'>
+						<input id="title" class="textInput" placeholder="&nbsp;" value="<?php echo $title; ?>"/>
+						<label for="title" class="textInputLabel">Titre</label>
+					</label>
+				</div>
+				<div id="metadata_2">
+					<b>ID : </b> <?php echo $id;?><br>
+					<b>Date : </b> <?php echo date("d/m/y",$date);?><br><br>
+				</div>
+			</div>
+			<div id="editorButtons">
+				<!--<span id="msg"><?php echo $msg; ?></span>&nbsp;&nbsp;-->
+				<div class="button_red" style="margin-right:16px" onclick="save()">
+					<i class="fas fa-save"></i>
+					&nbsp;Sauvegarder
+				</div>
+				<a class="button_grey" href="contents.php">
+					<i class="fas fa-ban"></i>
+					&nbsp;Annuler
+				</a>
+			</div>
 			<div id="toolbar">
 				<a class="icon" onclick="bold()">
 					<i class="fas fa-bold"></i>
@@ -260,16 +287,7 @@
 						<input type="hidden" name="title" value="" id="titleEditorSaveForm"/>
 						<input type="hidden" name="contentId" value="<?php echo $id; ?>"/>
 						<input type="hidden" name="html" id="html" value=""/>
-						<textarea id="editorTextContent" name="markdown" onkeyup="compile()" onChange="compile()" value=""><?php echo addslashes($markdown); ?></textarea>
-						<div class="button" onclick="save()">
-							<i class="fas fa-save"></i>
-							Sauvegarder
-						</div>
-						<a class="button_grey" href="contents.php">
-							<i class="fas fa-ban"></i>
-							Annuler
-						</a>
-						<div id="msg"><?php echo $msg; ?></div>
+						<textarea id="editorTextContent" name="markdown" onkeyup="compile()" onChange="compile()" value=""><?php echo $markdown; ?></textarea>
 					</form>
 				</div>
 				<div id="editorPreview"><div id="editorPreviewContent"></div></div>

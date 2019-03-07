@@ -15,13 +15,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link href="fonts/fonts.css" rel="stylesheet" type="text/css">
 		<link href="global.css" rel="stylesheet" type="text/css">
+		<link href="ui.css" rel="stylesheet" type="text/css">
 		<link href="imagesDropdown.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<script src="imagesDropdown.js"></script>
 		
 	</head>
 	<body>
-		<label class="button_select" for="filePicker">Ajouter</label>
+		<div class="button_container" style="text-align:center;">
+			<label class="button_red" for="filePicker">
+				<i class="far fa-images"></i>
+				&nbsp;Ajouter
+			</label>
+		</div>
 		<div id="addImageText">Sélectionner une image afin de la mettre en ligne</div>
 		<form id="fileForm" action="uploadImages.php" target="iframe" method="post" enctype="multipart/form-data">
 			<input type="file" id="filePicker" name="myfile" onchange="startUpload()">

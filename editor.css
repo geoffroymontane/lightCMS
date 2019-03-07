@@ -43,6 +43,8 @@
 	display:flex;
 	flex-direction:column;
 	margin-top:10px;
+	margin-left:16px;
+	margin-right:16px;
 }
 
 #toolbar{
@@ -51,6 +53,9 @@
 	width:auto;
 	max-width:100%;
 	padding-left:8px;
+	border:1px solid #ccc;
+	border-radius:6px 6px 0px 0px;
+	border-bottom-color:white;
 }
 
 .icon{
@@ -90,6 +95,48 @@
 
 }
 
+#metadata{
+	display:flex;
+	margin:0;
+	margin-top:16px;
+	margin-bottom:4px;
+}
+
+#metadata_1,#metadata_2{
+	width:50%;
+	border:1px solid #ccc;
+	border-radius:6px;
+	padding:16px;
+}
+
+#metadata_1{
+	margin-right:8px;
+}
+
+#metadata_2{
+	margin-left:8px;
+}
+
+#editorButtons{
+	margin:0;
+	padding:0;
+	text-align:right;
+}
+
+@media screen and (max-width:1000px){
+	#metadata{
+		flex-direction:column;
+	}
+	#metadata_1,#metadata_2{
+		width:100%;
+		padding:0;
+		margin:0;
+		border:none;
+	}
+	#editorButtons{
+		text-align:left;
+	}
+}
 
 .modal{
 	display:none;
@@ -217,89 +264,13 @@
 	display:none;
 }
 
-.button{
-	display:inline-block;
-	padding-left:12px;
-	padding-right:12px;
-	padding-top:10px;
-	padding-bottom:10px;
-	margin:auto;
-	border:1px solid #db2828;
-	border-radius:6px;
-	color:#db2828;
-  	text-align: center;
-	margin-bottom:16px;
-	margin-top:16px;
-	margin-left:16px;
-	text-decoration:none;
-}
-
-.button:hover{
-	background-color:#db2828;
-	border-color:#db2828;
-	color:white;
-}
-
-.button_grey{
-	display:inline-block;
-	padding-left:12px;
-	padding-right:12px;
-	padding-top:10px;
-	padding-bottom:10px;
-	margin:auto;
-	border:1px solid #222;
-	border-radius:6px;
-	color:#222;
-  	text-align: center;
-	margin-bottom:16px;
-	margin-top:16px;
-	margin-left:16px;
-	text-decoration:none;
-}
-
-.button_grey:hover{
-	background-color:#222;
-	border-color:#222;
-	color:white;
-}
-
 #msg{
 	height:16px;
 	line-height:16px;
 	width:300px;
 	margin-left:16px;
-}
-.button_red{
-	width:60px;
-	padding:12px;
-	margin:auto;
-	border:1px solid #db2828;
-	color:#db2828;
-  	text-align: center;
-	margin-bottom:16px;
-}
-
-
-.button_red:hover{
-	background-color:#db2828;
-	border-color:#db2828;
-	color:white;
-}
-
-.button_green{
-	width:60px;
-	padding:12px;
-	margin:auto;
-	border:1px solid #21ba45;
-	color:#21ba45;
-  	text-align: center;
-	margin-bottom:16px;
-}
-
-.button_green:hover{
-	background-color:#21ba45;
-	border-color:#21ba45;
-	color:white;
+	color:#ababab;
+	font-style:italic;
 }
 
 .checkbox{

@@ -36,6 +36,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link href="fonts/fonts.css" rel="stylesheet" type="text/css">
 		<link href="global.css" rel="stylesheet" type="text/css">
+		<link href="ui.css" rel="stylesheet" type="text/css">
 		<link href="connection.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<script>
@@ -55,17 +56,17 @@
 		<div id="connectionContent">
 			<div id="connectionFormTitle">Connexion</div>
 			<form action='connection.php' method='post' id='connectionForm'>
-				<label for="email" class='connectionFormInput'>
-					<input id="email" name="email" placeholder="&nbsp;"/>
-					<label for="email">Email</label>
+				<label for="email" class='connectionFormInput' class="textInputLabel">
+					<input id="email" name="email" placeholder="&nbsp;" class="textInput"/>
+					<label for="email" class="textInputLabel">Email</label>
 				</label>
-				<label for="password" class='connectionFormInput'>
-					<input id="password" type="password" name="password" placeholder="&nbsp;"/>
-					<label for="password">Mot de passe</label>
+				<label for="password" class='connectionFormInput' class="textInputLabel">
+					<input id="password" type="password" name="password" placeholder="&nbsp;" class="textInput"/>
+					<label for="password" class="textInputLabel">Mot de passe</label>
 				</label>
 
 				<div class='button_container' style="text-align:center">
-					<div id='submit' class='button' onclick="submit();">
+					<div id='submit' class='button_red' onclick="submit();">
 						<i class="fas fa-sign-in-alt"></i>
 						&nbsp;Connexion
 					</div>

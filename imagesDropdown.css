@@ -8,23 +8,6 @@
 	color:#777;
 }
 
-.button_select{
-	display:block;
-	width:60px;
-	padding:12px;
-	margin:auto;
-	border:1px solid #21ba45;
-	color:#21ba45;
-	margin-bottom:16px;
-	margin-top:16px;
-}
-
-.button_select:hover{
-	background-color:#21ba45;
-	border-color:#21ba45;
-	color:white;
-}
-
 #imagesList{
 	display:flex;
 	flex-wrap:wrap;
