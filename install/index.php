@@ -25,31 +25,38 @@
 					fwrite($file," ?>");
 					fclose($file);
 
-					$query=$pdo->prepare("CREATE TABLE IF NOT EXISTS lightcms_users (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,email VARCHAR(255),password VARCHAR(255));");
-					$query->execute();
+					if(file_exists("../credentials.php")){
+
+						$query=$pdo->prepare("CREATE TABLE IF NOT EXISTS lightcms_users (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,email VARCHAR(255),password VARCHAR(255));");
+						$query->execute();
 			
-					$query=$pdo->prepare("CREATE TABLE IF NOT EXISTS lightcms_contents (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,name VARCHAR(100),date INT,html TEXT,markdown TEXT);");
-					$query->execute();
+						$query=$pdo->prepare("CREATE TABLE IF NOT EXISTS lightcms_contents (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,name VARCHAR(100),date INT,html TEXT,markdown TEXT);");
+						$query->execute();
 
-					$query=$pdo->prepare("CREATE TABLE IF NOT EXISTS lightcms_images (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,name VARCHAR(255),date INT,extension VARCHAR(10));");
-					$query->execute();
+						$query=$pdo->prepare("CREATE TABLE IF NOT EXISTS lightcms_images (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,name VARCHAR(255),date INT,extension VARCHAR(10));");
+						$query->execute();
 				
-					$query=$pdo->prepare("SELECT * FROM lightcms_users");
-					$query->execute();
-					$countUsers=$query->rowCount();
+						$query=$pdo->prepare("SELECT * FROM lightcms_users");
+						$query->execute();
+						$countUsers=$query->rowCount();
 
-					if($countUsers==0){
-						$_SESSION["signUpAuthorization"]=true;
-						include("step2.php");
+						if($countUsers==0){
+							$_SESSION["signUpAuthorization"]=true;
+							include("step2.php");
+						}
+						else{
+							$msg="La connexion avec la base de données est opérationnelle. Un compte administrateur a été détecté. Vous pouvez vous connecter avec celui-ci.";
+							include("msg.php");
+						}
 					}
 					else{
-						$msg="La connexion avec la base de données est opérationnelle. Un compte administrateur a été détecté. Vous pourrez vous connecter avec celui-ci.";
+						$msg="Impossible de créer le fichier de configuration : permission refusée.";
 						include("msg.php");
 					}
 
 				}
 				catch(Exception $e){
-					$msg="Impossible de se connecter à la base de données.";	
+					$msg="Impossible de se connecter à la base de données : les informations fournies sont incorrectes.";	
 					include("step1.php");
 				}
 
