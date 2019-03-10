@@ -8,7 +8,7 @@ Si d'aventure l'installateur web précise qu'il ne peut créer le fichier de con
 
 L'intégralité de ces étapes devraient être inutiles sur un serveur web préconfiguré doté d'un accès ftp. Dans ce cas, il suffit de placer le répertoire lightCMS à la racine web (www ou / en général) et de visituer l'url /lightCMS.
 
-**ATTENTION** : en l'absence de certificat ssl (https), vos mots de passe sont susceptibles d'être exposés. Par conséquent, ne pas employer de mots de passe que vous utilisez par ailleurs durant vos phases de test.
+**ATTENTION** : en l'absence de certificat ssl (https), vos mots de passe sont susceptibles d'être exposés. Par conséquent, ne pas employer de mots de passe que vous utilisez par ailleurs.
 
 ## To-do
 
