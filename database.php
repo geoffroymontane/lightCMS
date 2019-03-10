@@ -1,11 +1,12 @@
 <?php
-//config SQL
-$DBhost  = "localhost";
-$DBowner = "root";
-$DBpw    = "password";
-$DBName  = "lightCMS";
+include("credentials.php");
 
-$DBconnect = "mysql:dbname=".$DBName.";host=".$DBhost;
-$pdo = new PDO($DBconnect, $DBowner, $DBpw);
+if(file_exists("credentials.php")){
+	$DBconnect = "mysql:dbname=".$DBName.";host=".$DBhost;
+	$pdo = new PDO($DBconnect, $DBowner, $DBpw);
+}
+else{
+	header("Location:install");
+}
 
 ?>

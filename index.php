@@ -5,6 +5,8 @@
 		exit();
 	}
 
+	include('database.php');
+
 ?>
 <html>
 	<head>

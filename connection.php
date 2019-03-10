@@ -1,8 +1,8 @@
 <?php
-
-	include('database.php');
 	session_start();
 	sleep(1);
+
+	include('database.php');
 
 	if(isset($_GET["disconnect"])){
 		$msg="Déconnecté avec succès";
