@@ -7,6 +7,7 @@
 	if(isset($_GET["disconnect"])){
 		$msg="Déconnecté avec succès";
 		$_SESSION["isConnected"]=0;	
+		$_SESSION["masterAuthorizationGranted"]="";
 	}
 
 	if(isset($_POST['email']) && isset($_POST['password'])){

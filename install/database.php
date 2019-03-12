@@ -25,7 +25,7 @@
 
 		<div id="installationContent">
 			<div id="installationFormTitle">Installation : base de données</div>
-			<form action='index.php?step1' method='post' id='installationForm'>
+			<form action='index.php?database' method='post' id='installationForm'>
 				<span id='fullMsg'>
 					Notre service nécessite une base de données MySQL ou MariaDB. Veuillez saisir vos informations de connexion.
 				</span>
@@ -47,8 +47,12 @@
 				</label>
 
 				<div class='button_container' style="text-align:center">
+					<a id='submit' class='button_grey' href="menu.php">
+						<i class="fas fa-times"></i>
+						&nbsp;Annuler
+					</a>
 					<div id='submit' class='button_red' onclick="submit();">
-						Etape suivante&nbsp;
+						Enregistrer&nbsp;
 						<i class="fas fa-angle-right"></i>
 					</div>
 				</div>
