@@ -1,8 +1,8 @@
 <?php
 	session_start();
 	sleep(1);
-	error_reporting(E_ALL);
-	ini_set("display_errors", 1);
+	//error_reporting(E_ALL);
+	//ini_set("display_errors", 1);
 
 
 	//
@@ -55,7 +55,7 @@
 		}
 	}
 	
-
+	// Mastercode authentification
 	if(isset($_POST['mastercode'])){
 		// If the mastercode is correct
 		if(strcmp($_POST['mastercode'],$mastercode)==0){
@@ -73,7 +73,9 @@
 			include("mastercode.php");
 		}
 	}
+	// When authentified
 	else if(isset($_SESSION['masterAuthorizationGranted']) && strcmp($_SESSION['masterAuthorizationGranted'],$mastercode)==0){
+		// Database setup ui
 		if(isset($_GET['database'])){
 			if(file_exists("../credentials.php")){
 				$msg="Il faut supprimer credentials.php afin de pouvoir relancer le processus d'installation.";
@@ -130,30 +132,47 @@
 				}
 			}
 		}
+		// Sign-up ui
 		else if(isset($_GET['signup'])){
 			if(isset($_POST['password']) && isset($_POST['password_bis']) && isset($_POST['login']) && strcmp($_POST["password"],$_POST["password_bis"])==0){
 				include("../credentials.php");
 				if(file_exists("../credentials.php")){
-					$DBconnect = "mysql:dbname=".$DBName.";host=".$DBhost;
-					$pdo = new PDO($DBconnect, $DBowner, $DBpw);
+					if(strlen($_POST['password'])>=8){
+						if(filter_var($_POST['login'], FILTER_VALIDATE_EMAIL)){
+							$DBconnect = "mysql:dbname=".$DBName.";host=".$DBhost;
+							$pdo = new PDO($DBconnect, $DBowner, $DBpw);
 
-					$hash=password_hash($_POST['password'],PASSWORD_DEFAULT);
-					$query=$pdo->prepare("INSERT INTO lightcms_users (email,password) VALUES (?,?)");
-					$query->execute(array($_POST["login"],$hash));
+							$hash=password_hash($_POST['password'],PASSWORD_DEFAULT);
+							$query=$pdo->prepare("INSERT INTO lightcms_users (email,password) VALUES (?,?)");
+							$query->execute(array($_POST["login"],$hash));
 
-					$msg="Compte créé avec succès";	
-					include("msg.php");
+							$msg="Compte créé avec succès";	
+							include("msg.php");
+						}
+						else{
+							$mail=$_POST['login'];
+							$msg="Ce n'est pas une adresse email valide.";
+							include("signup.php");
+						}
+					}
+					else{
+						$mail=$_POST['login'];
+						$msg="Le mot de passe doit faire au moins 8 caractères.";
+						include("signup.php");
+					}
 				}
 				else{
-					$msg="Veuillez vérifier votre saisie.";
+					$mail=$_POST['login'];
+					$msg="La base de données n'est pas configurée.";
 					include("signup.php");
 				}
 			}
 			else{
+				$mail=$_POST['login'];
+				$msg="Veuillez vérifier votre saisie.";
 				include("signup.php");
 			}
-		}
-		else{
+		} else{
 			include("menu.php");
 		}
 

@@ -1,4 +1,13 @@
+<?php 
+	if(isset($mail)){
+		$value=htmlspecialchars($mail);	
+	}
+	else{
+		$value="";
+	}
+?>
 <html>
+
 
 	<head>
 		
@@ -27,7 +36,7 @@
 			<div id="installationFormTitle">Installation : inscription</div>
 			<form action='index.php?signup' method='post' id='installationForm'>
 				<label for="login" class='installationFormInput' class="textInputLabel">
-					<input id="login" name="login" placeholder="&nbsp;" class="textInput"/>
+					<input id="login" name="login" placeholder="&nbsp;" class="textInput" value="<?php echo $value;?>"/>
 					<label for="login" class="textInputLabel">Email</label>
 				</label>
 				<label for="password" class='installationFormInput' class="textInputLabel">
