@@ -17,3 +17,4 @@ L'intégralité de ces étapes devraient être inutiles sur un serveur web préc
 *  Ajouter l'option souligner
 *  Comment aligner deux images horizontalement ?
 *  Popu lorsque l'on quitte sans sauvegarder
+*  Vérification de la qualité du mot de passe / que l'adresse mail est valide
