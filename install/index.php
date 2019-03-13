@@ -101,7 +101,7 @@
 							$query=$pdo->prepare("CREATE TABLE IF NOT EXISTS lightcms_users (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,email VARCHAR(255),password VARCHAR(255));");
 							$query->execute();
 				
-							$query=$pdo->prepare("CREATE TABLE IF NOT EXISTS lightcms_contents (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,name VARCHAR(100),date INT,html TEXT,markdown TEXT);");
+							$query=$pdo->prepare("CREATE TABLE IF NOT EXISTS lightcms_contents (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,name VARCHAR(100),date INT,html TEXT);");
 							$query->execute();
 
 							$query=$pdo->prepare("CREATE TABLE IF NOT EXISTS lightcms_images (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,name VARCHAR(255),date INT,extension VARCHAR(10));");

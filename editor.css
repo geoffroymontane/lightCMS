@@ -242,6 +242,21 @@
 	background-color:#000;
 }
 
+#link{
+	max-width:300px;
+}
+
+#linkLabel{
+	margin-left:50px;
+	margin-right:50px;
+}
+
+#linkPromptContent{
+	width:400px;
+	position:relative;
+	display:block;
+}
+
 #imgPromptForm{
 	display:flex;
 	flex-direction:row;

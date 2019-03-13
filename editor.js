@@ -1,87 +1,98 @@
 var selectedImage="";
-
-function compile(){
-	var markdown=document.getElementById("editorTextContent").value;
-	var html=new showdown.Converter().makeHtml(markdown);
-	document.getElementById("editorPreviewContent").innerHTML=html;
-}
+var saved=true;
 
 function save(){
-	var markdown=document.getElementById("editorTextContent").value;
-	var html=new showdown.Converter().makeHtml(markdown);
+	saved=true;
+	var html=document.getElementById("editorTextContent").innerHTML;
 	var title=document.getElementById("title").value;
 	document.getElementById("titleEditorSaveForm").value=title;
 	document.getElementById("html").value=html;
 	document.getElementById("editorSaveForm").submit();
 }
 
+function whenchange(){
+	saved=false;
+}
+
+window.onbeforeunload=function(event) {
+	if(!saved){
+		event.returnValue='Voulez-vous vraiment quitter cette page sans enregistrer ?';
+		return event.returnValue;
+	}
+	return;
+};
+
+function saveCursorPosition(){
+	doSave();
+	console.log("saved");
+}
+
+function restoreCursorPosition(){
+	doRestore();
+	console.log("restored");
+}
+
+
 function formatBlock(type){
-	document.getElementById("editorTextContent").focus();
 	document.execCommand("formatBlock",false,type);
+	whenchange();
 }
 
 function bold(event){
-	document.getElementById("editorTextContent").focus();
+	saveCursorPosition();
 	document.execCommand("bold",false,null);
+	whenchange();
 }
 
 function italic(){
-	document.getElementById("editorTextContent").focus();
+	saveCursorPosition();
 	document.execCommand("italic",false,null);
+	whenchange();
+}
+
+function underline(){
+	saveCursorPosition();
+	document.execCommand("underline",false,null);
 }
 
 function align(direction){
-	document.getElementById("editorTextContent").focus();
+	saveCursorPosition();
 	document.execCommand("justify"+direction,false,null);
+	whenchange();
 }
 
 function header(){
-	document.getElementById("editorTextContent").focus();
+	saveCursorPosition();
 	formatBlock("h1");
 }
 
 function list(){
-	document.getElementById("editorTextContent").focus();
+	saveCursorPosition();
 	document.execCommand("insertUnorderedList",false,null);
+	whenchange();
 }
 
 function list_ordered(){
-	document.getElementById("editorTextContent").focus();
+	saveCursorPosition();
 	document.execCommand("insertOrderedList",false,null);
+	whenchange();
 }
 
 function undo(){
-	document.getElementById("editorTextContent").focus();
+	saveCursorPosition();
 	document.execCommand("undo",false,null);
+	whenchange();
 }
 
 function redo(){
-	document.getElementById("editorTextContent").focus();
+	saveCursorPosition();
 	document.execCommand("redo",false,null);
+	whenchange();
 }
 
-function blockquote(){
-}
-
-function link(url){
-	document.getElementById("editorTextContent").focus();
-	document.execCommand("createLink",false,url);
-}
-
-function image(){
-	var textarea=document.getElementById("editorTextContent");
-
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
-
-	textarea.value = textarea.value.slice(0, start) + '![' + textarea.value.slice(start, end) + '](http://)' + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + 12;
-
-	textarea.focus();
-	compile();
-}
 
 function showImgPrompt(){
+	saveCursorPosition();
 	document.getElementById("imgPrompt").style.display="block";
 	document.getElementById("imgPicker").style.display="block";
 	document.getElementById("imgPromptColumn1").style.display="none";
@@ -92,9 +103,7 @@ function showImgPrompt(){
 function showImgPrompt_(){
 	document.getElementById("imgPrompt").style.display="block";
 	document.getElementById("imgPicker").style.display="none";
-	document.getElementById("imgPromptColumn1").style.display="block";
-	document.getElementById("imgPromptColumn2").style.display="block";
-	document.getElementById("imgPrompt").focus();
+	document.getElementById("imgPromptColumn1").style.display="block"; document.getElementById("imgPromptColumn2").style.display="block"; document.getElementById("imgPrompt").focus();
 }
 
 function hideImgPrompt(){
@@ -102,17 +111,42 @@ function hideImgPrompt(){
 	document.getElementById("imgPicker").style.display="block";
 	document.getElementById("imgPromptColumn1").style.display="none";
 	document.getElementById("imgPromptColumn2").style.display="none";
-	document.getElementById("editorTextContent").focus();
+	//document.getElementById("editorTextContent").focus();
+	restoreCursorPosition();
 }
 
 function showColorPrompt(){
+	saveCursorPosition();
+	//document.getElementById("editorTextContent").focus();
 	document.getElementById("colorPrompt").style.display="block";
 	document.getElementById("colorPrompt").focus();
 }
 
 function hideColorPrompt(){
+	//document.getElementById("editorTextContent").focus();
 	document.getElementById("colorPrompt").style.display="none";
-	document.getElementById("editorTextContent").focus();
+	//document.getElementById("editorTextContent").focus();
+	restoreCursorPosition();
+}
+
+function showLinkPrompt(){
+	saveCursorPosition();
+	document.getElementById("linkPrompt").style.display="block";
+	document.getElementById("linkPrompt").focus();
+}
+
+function hideLinkPrompt(){
+	document.getElementById("linkPrompt").style.display="none";
+	restoreCursorPosition();
+}
+
+function insertLink(){
+	console.log("test");
+	var url=document.getElementById("link").value;
+	console.log(url);
+	hideLinkPrompt();
+	document.execCommand("createLink",false,url);
+	whenchange();
 }
 
 function insertImage(){
@@ -137,31 +171,21 @@ function insertImage(){
 	});
 
 	const txt = '<div class="img_container ' + classes_img_container + '"><img src="images/' + selectedImage + '" class="'+classes_img+'"></div>';
-	document.getElementById("editorTextContent").focus();
+	hideImgPrompt();
 	document.execCommand("insertHTML",false,txt);
+	whenchange();
 }
 
 function selectImage(img){
+	//document.getElementById("editorTextContent").focus();
 	selectedImage=img;
 	showImgPrompt_();
 }
 
-function insertColor(name){
-	var textarea=document.getElementById("editorTextContent");
-				
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
-	
-	const txt = '<' + name + '>' + textarea.value.slice(start, end) + '</' + name + '>';
-	textarea.value = textarea.value.slice(0, start) + txt  + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + name.length + 2;
-
-	textarea.focus();
-	compile();
+function insertColor(color){
+	//document.getElementById("editorTextContent").focus();
 	hideColorPrompt();
+	document.execCommand("foreColor",false,color);
 }
 
-window.onload=function(){
-	compile();
-};
 

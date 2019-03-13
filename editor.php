@@ -4,45 +4,46 @@
 		include("database.php");
 
 		//Save existing content
-		if(isset($_GET["save"]) && isset($_POST["contentId"]) && strcmp($_POST["contentId"],"none")!=0 && isset($_POST["markdown"]) && isset($_POST["html"])){
-			$query=$pdo->prepare("UPDATE lightcms_contents SET markdown=?,html=?,name=? WHERE id=?;");
-			$query->execute(array($_POST["markdown"],$_POST["html"],$_POST["title"],$_POST["contentId"]));
+		if(isset($_GET["save"]) && isset($_POST["contentId"]) && strcmp($_POST["contentId"],"none")!=0 && isset($_POST["html"])){
+			$query=$pdo->prepare("UPDATE lightcms_contents SET html=?,name=? WHERE id=?;");
+			$query->execute(array($_POST["html"],$_POST["title"],$_POST["contentId"]));
 
 			$id=$_POST["contentId"];
-			$markdown=$_POST["markdown"];
 			$title=$_POST["title"];
+			$html=$_POST["html"];
 			$msg="Sauvegardé avec succès";
 		}
 		//Save new content
-		else if(isset($_GET["save"]) && isset($_POST["markdown"]) && isset($_POST["html"])){
-			$query=$pdo->prepare("INSERT INTO lightcms_contents (markdown, html, date, name) VALUES (?,?,?,?)");
-			$query->execute(array($_POST["markdown"],$_POST["html"],time(),$_POST["title"]));
+		else if(isset($_GET["save"]) && isset($_POST["html"])){
+			$query=$pdo->prepare("INSERT INTO lightcms_contents (html, date, name) VALUES (?,?,?)");
+			$query->execute(array($_POST["html"],time(),$_POST["title"]));
+
 
 			$query=$pdo->prepare("SELECT id FROM lightcms_contents ORDER BY id DESC LIMIT 1;");
 			$query->execute();
 			$tab=$query->fetchAll();
 
 			$id=$tab[0]["id"];
-			$markdown=$_POST["markdown"];
 			$title=$_POST["title"];
+			$html=$_POST["html"];
+			$date=$_POST["date"];
 			$msg="Sauvegardé avec succès";
 		}
 		//Show existing content
 		else if(isset($_GET["id"])){
-			$query=$pdo->prepare("SELECT name,date,markdown FROM lightcms_contents WHERE id=?;");
+			$query=$pdo->prepare("SELECT name,date,html FROM lightcms_contents WHERE id=?;");
 			$query->execute(array($_GET["id"]));
 			$tab=$query->fetchAll();
 			
 			$id=$_GET["id"];
 			$title=$tab[0]["name"];
 			$date=$tab[0]["date"];
-			$markdown=$tab[0]["markdown"];
+			$html=$tab[0]["html"];
 		}
 		//New content
 		else{
 			$id="none";
 			$title="";
-			$markdown="";
 		}
 	}
 ?>
@@ -58,29 +59,55 @@
 		<link href="editor.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 		<script src="showdown/dist/showdown.js"></script>
+		<script src="editor_selection.js"></script>
 		<script src="editor.js"></script>
 		
 	</head>
 
 	<body>
+
+		<!-- COLOR POP-UP -->
 		<div id="colorPrompt" class="modal">
 			<div id="colorPromptGrid" class="modal-content">
-				<div class="colorPromptIcon" onclick="hideColorPrompt()" style="border:1px solid #db2828"><span class="colorPromptTimes">&times;</span></div>
-				<div class="color" id="red" onclick="insertColor('red')"></div>
-				<div class="color" id="orange" onclick="insertColor('orange')"></div>
-				<div class="color" id="yellow" onclick="insertColor('yellow')"></div>
-				<div class="color" id="olive" onclick="insertColor('olive')"></div>
-				<div class="color" id="green" onclick="insertColor('green')"></div>
-				<div class="color" id="teal" onclick="insertColor('teal')"></div>
-				<div class="color" id="blue" onclick="insertColor('blue')"></div>
-				<div class="color" id="violet" onclick="insertColor('violet')"></div>
-				<div class="color" id="purple" onclick="insertColor('purple')"></div>
-				<div class="color" id="pink" onclick="insertColor('pink')"></div>
-				<div class="color" id="brown"onclick="insertColor('brown')"></div>
-				<div class="color" id="grey" onclick="insertColor('grey')"></div>
-				<div class="color" id="black" onclick="insertColor('black')"></div>
+				<div class="colorPromptIcon" onmousedown="hideColorPrompt()" style="border:1px solid #db2828"><span class="colorPromptTimes">&times;</span></div>
+				<div class="color" id="red" onmousedown="insertColor('#db2828')"></div>
+				<div class="color" id="orange" onmousedown="insertColor('#f2711c')"></div>
+				<div class="color" id="yellow" onmousedown="insertColor('#fbbd08')"></div>
+				<div class="color" id="olive" onmousedown="insertColor('#b5cc18')"></div>
+				<div class="color" id="green" onmousedown="insertColor('#21ba45')"></div>
+				<div class="color" id="teal" onmousedown="insertColor('#00b5ad')"></div>
+				<div class="color" id="blue" onmousedown="insertColor('#2185d0')"></div>
+				<div class="color" id="violet" onmousedown="insertColor('#6435c9')"></div>
+				<div class="color" id="purple" onmousedown="insertColor('#a333c8')"></div>
+				<div class="color" id="pink" onmousedown="insertColor('#e03997')"></div>
+				<div class="color" id="brown"onmousedown="insertColor('#a5673f')"></div>
+				<div class="color" id="grey" onmousedown="insertColor('#767676')"></div>
+				<div class="color" id="black" onmousedown="insertColor('#000')"></div>
 			</div>
 		</div>
+
+		<!-- LINK POP-UP -->
+		<div id="linkPrompt" class="modal">
+			<div id="linkPromptContent" class="modal-content">
+				<br>
+				<label id="linkLabel" for="link" class='textInputContainer'>
+					<input id="link" class="textInput" placeholder="&nbsp;" value=""/>
+					<label for="link" class="textInputLabel">Lien</label>
+				</label>
+				<div class="button_container" style="text-align:center;">
+					<div class="button_grey" onmousedown="hideLinkPrompt()">
+						<i class="fas fa-ban"></i>
+						&nbsp;Annuler
+					</div>
+					<div class="button_red" onmousedown="insertLink()">
+						<i class="fas fa-plus"></i>
+						&nbsp;Insérer
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- IMAGE POP-UP -->
 		<div id="imgPrompt" class="modal">
 			<form id="imgPromptForm" class="modal-content">
 				<iframe id="imgPicker" src="imagesDropdown.php"></iframe>
@@ -145,7 +172,7 @@
 						Flotte à droite du texte
 					</div>
 					<br>
-					<div class="button_grey" onclick="hideImgPrompt()">
+					<div class="button_grey" onmousedown="hideImgPrompt()">
 						<i class="fas fa-ban"></i>
 						&nbsp;Fermer
 					</div>
@@ -202,7 +229,7 @@
 					</div>
 					<div class="checkbox_container">
 						<input id="mobile_floatleft" class="checkbox" type="radio" name="4">
-						<div class="checkmark"><i class="fas fa-check"></i></div>
+						<div class="checkmark"></div>
 						Flotte à gauche du texte
 					</div>
 					<div class="checkbox_container">
@@ -211,7 +238,7 @@
 						Flotte à droite du texte
 					</div>
 					<br>
-					<div class="button_red" onclick="insertImage()">
+					<div class="button_red" onmousedown="insertImage()">
 						<i class="fas fa-plus"></i>
 						&nbsp;Insérer
 					</div>
@@ -236,7 +263,7 @@
 			</div>
 			<div id="editorButtons">
 				<!--<span id="msg"><?php echo $msg; ?></span>&nbsp;&nbsp;-->
-				<div class="button_red" style="margin-right:16px" onclick="save()">
+				<div class="button_red" style="margin-right:16px" onmousedown="save()">
 					<i class="fas fa-save"></i>
 					&nbsp;Sauvegarder
 				</div>
@@ -246,57 +273,53 @@
 				</a>
 			</div>
 			<div id="toolbar">
-				<a class="icon" id="cool" onclick="bold(event)">
+				<a class="icon" id="cool" onmousedown="bold(event)">
 					<i class="fas fa-bold"></i>
 				</a>
-				<a class="icon" onclick="italic()">
+				<a class="icon" onmousedown="italic()">
 					<i class="fas fa-italic"></i>
 				</a>
-				<a class="icon" onclick="header()">
+				<a class="icon" onmousedown="underline()">
+					<i class="fas fa-underline"></i>
+				</a>
+				<a class="icon" onmousedown="header()">
 					<i class="fas fa-heading"></i>
 				</a>
-				<a class="icon" onclick="showColorPrompt()">
+				<a class="icon" onmousedown="showColorPrompt()">
 					<i class="fas fa-palette"></i>
 				</a>
 				<a class="separator">|</a>
-				<a class="icon" onclick="align('Right')">
+				<a class="icon" onmousedown="align('Right')">
 					<i class="fas fa-align-right"></i>
 				</a>
-				<a class="icon" onclick="align('Center')">
+				<a class="icon" onmousedown="align('Center')">
 					<i class="fas fa-align-center"></i>
 				</a>
-				<a class="icon" onclick="align('Left')">
+				<a class="icon" onmousedown="align('Left')">
 					<i class="fas fa-align-left"></i>
 				</a>
-				<a class="icon" onclick="align('Full')">
+				<a class="icon" onmousedown="align('Full')">
 					<i class="fas fa-align-justify"></i>
 				</a>
 				<a class="separator">|</a>
-				<a class="icon" onclick="list()">
+				<a class="icon" onmousedown="list()">
 					<i class="fas fa-list-ul"></i>
 				</a>
-				<a class="icon" onclick="list_ordered()">
+				<a class="icon" onmousedown="list_ordered()">
 					<i class="fas fa-list-ol"></i>
 				</a>
 				<a class="separator">|</a>
-				<a class="icon" onclick="blockquote()">
-					<i class="fas fa-quote-left"></i>
-				</a>
-				<a class="icon">
-					<i class="fas fa-table"></i>
-				</a>
-				<a class="separator">|</a>
-				<a class="icon" onclick="link()">
+				<a class="icon" onmousedown="showLinkPrompt()">
 					<i class="fas fa-link"></i>
 				</a>
-				<a class="icon" onclick="showImgPrompt()">
+				<a class="icon" onmousedown="showImgPrompt()">
 					<i class="far fa-image"></i>
 				</a>
 				<a class="separator">|</a>
-				<a class="icon" onclick="undo()">
+				<a class="icon" onmousedown="undo()">
 					<i class="fas fa-undo"></i>
 				</a>
-				<a class="icon" onclick="redo()">
+				<a class="icon" onmousedown="redo()">
 					<i class="fas fa-redo-alt"></i>
 				</a>
 			</div>
@@ -307,8 +330,8 @@
 						<input type="hidden" name="title" value="" id="titleEditorSaveForm"/>
 						<input type="hidden" name="contentId" value="<?php echo $id; ?>"/>
 						<input type="hidden" name="html" id="html" value=""/>
-						<div src="editor.html" id="editorTextContent" contenteditable="true">
-							<?php echo $markdown; ?>
+						<div id="editorTextContent" onchange="whenchange();" onKeyUp="whenchange();" contenteditable="true">
+							<?php echo $html; ?>
 						</div>
 					</form>
 				</div>
