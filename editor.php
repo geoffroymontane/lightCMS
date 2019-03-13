@@ -246,7 +246,7 @@
 				</a>
 			</div>
 			<div id="toolbar">
-				<a class="icon" onclick="bold()">
+				<a class="icon" id="cool" onclick="bold(event)">
 					<i class="fas fa-bold"></i>
 				</a>
 				<a class="icon" onclick="italic()">
@@ -259,16 +259,16 @@
 					<i class="fas fa-palette"></i>
 				</a>
 				<a class="separator">|</a>
-				<a class="icon" onclick="align('right')">
+				<a class="icon" onclick="align('Right')">
 					<i class="fas fa-align-right"></i>
 				</a>
-				<a class="icon" onclick="align('center')">
+				<a class="icon" onclick="align('Center')">
 					<i class="fas fa-align-center"></i>
 				</a>
-				<a class="icon" onclick="align('left')">
+				<a class="icon" onclick="align('Left')">
 					<i class="fas fa-align-left"></i>
 				</a>
-				<a class="icon" onclick="align('justify')">
+				<a class="icon" onclick="align('Full')">
 					<i class="fas fa-align-justify"></i>
 				</a>
 				<a class="separator">|</a>
@@ -292,6 +292,13 @@
 				<a class="icon" onclick="showImgPrompt()">
 					<i class="far fa-image"></i>
 				</a>
+				<a class="separator">|</a>
+				<a class="icon" onclick="undo()">
+					<i class="fas fa-undo"></i>
+				</a>
+				<a class="icon" onclick="redo()">
+					<i class="fas fa-redo-alt"></i>
+				</a>
 			</div>
 
 			<section id="editorBottom">
@@ -300,10 +307,11 @@
 						<input type="hidden" name="title" value="" id="titleEditorSaveForm"/>
 						<input type="hidden" name="contentId" value="<?php echo $id; ?>"/>
 						<input type="hidden" name="html" id="html" value=""/>
-						<textarea id="editorTextContent" name="markdown" onkeyup="compile()" onChange="compile()" value=""><?php echo $markdown; ?></textarea>
+						<div src="editor.html" id="editorTextContent" contenteditable="true">
+							<?php echo $markdown; ?>
+						</div>
 					</form>
 				</div>
-				<div id="editorPreview"><div id="editorPreviewContent"></div></div>
 			</section>
 		</section>
 

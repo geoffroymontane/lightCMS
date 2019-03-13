@@ -6,8 +6,8 @@ body{
 
 #menu{
 	background-color:#222;
-	width:300px;
-	min-width:300px;
+	width:200px;
+	min-width:200px;
 	height:100%;
 	min-height:100%;
 	display:flex;

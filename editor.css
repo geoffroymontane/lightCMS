@@ -2,7 +2,7 @@
 
 
 #editorText{
-	width:50%;
+	width:100%;
 	height:600px;
 	border: 1px solid #ccc;
 	margin-left:0px;	
@@ -10,13 +10,14 @@
 }
 
 #editorTextContent{
+	overflow:auto;
 	width:100%;
 	height:100%;
 	resize:none;
 	margin:0;
 	padding:0;
 	border:none;
-	padding:8px;
+	padding:0px;
 }
 
 #editorPreview{
@@ -302,5 +303,13 @@
 }
 .checkbox_container input:checked ~ .checkmark{
 	background-color:#2185d0;
+}
+
+img:active{
+	border:1px solid blue;
+}
+
+img:hover{
+	border:1px solid blue;
 }
 

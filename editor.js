@@ -15,125 +15,62 @@ function save(){
 	document.getElementById("editorSaveForm").submit();
 }
 
-function insertAtCursor (input, textToInsert) {
-	const value = input.value;
-
-	const start = input.selectionStart;
-	const end = input.selectionEnd;
-
-	input.value = value.slice(0, start) + textToInsert + value.slice(end);
-	input.selectionStart = input.selectionEnd = start + textToInsert.length;
+function formatBlock(type){
+	document.getElementById("editorTextContent").focus();
+	document.execCommand("formatBlock",false,type);
 }
 
-function bold(){
-	var textarea=document.getElementById("editorTextContent");
-				
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
-
-	textarea.value = textarea.value.slice(0, start) + '**' + textarea.value.slice(start, end) + '**' + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + 2;
-
-	textarea.focus();
-	compile();
+function bold(event){
+	document.getElementById("editorTextContent").focus();
+	document.execCommand("bold",false,null);
 }
 
 function italic(){
-	var textarea=document.getElementById("editorTextContent");
-				
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
-
-	textarea.value = textarea.value.slice(0, start) + '*' + textarea.value.slice(start, end) + '*' + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + 1;
-
-	textarea.focus();
-	compile();
+	document.getElementById("editorTextContent").focus();
+	document.execCommand("italic",false,null);
 }
 
 function align(direction){
-	var textarea=document.getElementById("editorTextContent");
-				
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
-
-	textarea.value = textarea.value.slice(0, start) + '<' + direction + '>' + textarea.value.slice(start, end) + '</' + direction + '>' + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + 2 + direction.length;
-
-	textarea.focus();
-	compile();
+	document.getElementById("editorTextContent").focus();
+	document.execCommand("justify"+direction,false,null);
 }
 
-
-
 function header(){
-	var textarea=document.getElementById("editorTextContent");
-				
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
-
-	textarea.value = textarea.value.slice(0, start) + '#' + textarea.value.slice(start, end) + '' + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + 1;
-
-	textarea.focus();
-	compile();
+	document.getElementById("editorTextContent").focus();
+	formatBlock("h1");
 }
 
 function list(){
-	var textarea=document.getElementById("editorTextContent");
-				
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
-
-	textarea.value = textarea.value.slice(0, start) + '* ' + textarea.value.slice(start, end) + '' + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + 2;
-
-	textarea.focus();
-	compile();
+	document.getElementById("editorTextContent").focus();
+	document.execCommand("insertUnorderedList",false,null);
 }
 
 function list_ordered(){
-	var textarea=document.getElementById("editorTextContent");
-				
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
+	document.getElementById("editorTextContent").focus();
+	document.execCommand("insertOrderedList",false,null);
+}
 
-	textarea.value = textarea.value.slice(0, start) + '1. ' + textarea.value.slice(start, end) + '' + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + 3;
+function undo(){
+	document.getElementById("editorTextContent").focus();
+	document.execCommand("undo",false,null);
+}
 
-	textarea.focus();
-	compile();
+function redo(){
+	document.getElementById("editorTextContent").focus();
+	document.execCommand("redo",false,null);
 }
 
 function blockquote(){
-	var textarea=document.getElementById("editorTextContent");
-				
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
-
-	textarea.value = textarea.value.slice(0, start) + '>' + textarea.value.slice(start, end) + '  ' + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + 3;
-
-	textarea.focus();
-	compile();
 }
 
-function link(){
-	var textarea=document.getElementById("editorTextContent");
-				
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
-
-	textarea.value = textarea.value.slice(0, start) + '[' + textarea.value.slice(start, end) + '](http://)' + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + 11;
-
-	textarea.focus();
-	compile();
+function link(url){
+	document.getElementById("editorTextContent").focus();
+	document.execCommand("createLink",false,url);
 }
 
 function image(){
 	var textarea=document.getElementById("editorTextContent");
-				
+
 	const start = textarea.selectionStart;
 	const end = textarea.selectionEnd;
 
@@ -182,15 +119,15 @@ function insertImage(){
 	var classes_img="";
 	var classes_img_container="";
 	var choices_img=["default","full","onequarter","onethird","onehalf","twothirds",
-	"floatleft","floatright","center","mobile_default","mobile_full",
-	"mobile_onequarter","mobile_onethird","mobile_onehalf","mobile_twothirds",
-	"mobile_center","mobile_floatleft","mobile_floatright"];
+	    "floatleft","floatright","center","mobile_default","mobile_full",
+	    "mobile_onequarter","mobile_onethird","mobile_onehalf","mobile_twothirds",
+	    "mobile_center","mobile_floatleft","mobile_floatright"];
 	var choices_img_container=["left","right","mobile_left","mobile_right"];
 
 	choices_img.forEach(function(item,index,array){
-		if(document.getElementById(item).checked){
-			classes_img+=item+" ";
-		}
+			if(document.getElementById(item).checked){
+				classes_img+=item+" ";
+			}
 	});
 
 	choices_img_container.forEach(function(item,index,array){
@@ -199,18 +136,9 @@ function insertImage(){
 		}
 	});
 
-	var textarea=document.getElementById("editorTextContent");
-				
-	const start = textarea.selectionStart;
-	const end = textarea.selectionEnd;
-	
 	const txt = '<div class="img_container ' + classes_img_container + '"><img src="images/' + selectedImage + '" class="'+classes_img+'"></div>';
-	textarea.value = textarea.value.slice(0, start) + txt  + textarea.value.slice(end);
-	textarea.selectionStart = textarea.selectionEnd = start + txt.length + 1;
-
-	textarea.focus();
-	compile();
-	hideImgPrompt();
+	document.getElementById("editorTextContent").focus();
+	document.execCommand("insertHTML",false,txt);
 }
 
 function selectImage(img){
@@ -236,5 +164,4 @@ function insertColor(name){
 window.onload=function(){
 	compile();
 };
-
 
