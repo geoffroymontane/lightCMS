@@ -13,8 +13,6 @@ L'intégralité de ces étapes devraient être inutiles sur un serveur web préc
 ## To-do
 
 *  Bug images alignées à gauche/droite
-*  Problème avec saut de ligne lorsque le texte est aligné
 *  Ajouter l'option souligner
 *  Comment aligner deux images horizontalement ?
-*  Popu lorsque l'on quitte sans sauvegarder
-*  Vérification de la qualité du mot de passe / que l'adresse mail est valide
+*  Vérification de la qualité du mot de passe
