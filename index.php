@@ -27,6 +27,10 @@
 			</a>
 		</div>
 		<div id="menu">
+			<a class="menuItem" onclick='goTo("statistics.php")'>
+				<i class="fas fa-chart-bar"></i>
+				<span class="menuItemText">Statistiques</span>
+			</a>
 			<a class="menuItem" onclick='goTo("contents.php")'>
 				<i class="fas fa-edit"></i>
 				<span class="menuItemText">Editeur</span>
@@ -35,17 +39,13 @@
 				<i class="fas fa-images"></i>
 				<span class="menuItemText">Images</span>
 			</a>
-			<a class="menuItem">
-				<i class="fas fa-chart-bar"></i>
-				<span class="menuItemText">Statistiques</span>
-			</a>
 			<a class="menuItem menuItemEnd" href="connection.php?disconnect">
 				<i class="fas fa-sign-out-alt"></i>
 				<span class="menuItemText">Déconnexion</span>
 			</a>
 		</div>
 		
-		<iframe src="contents.php" id="content"></iframe>
+		<iframe src="statistics.php" id="content"></iframe>
 	</body>
 
 

@@ -44,7 +44,7 @@
 			<?php
 				if(isset($_SESSION["isConnected"]) && $_SESSION["isConnected"]==1){
 					for($i=0;$i<count($tab);$i++){
-						echo "<div class='image_container'><img src='images/".$tab[$i]["id"].".".$tab[$i]["extension"]."' class='image'></div>";
+						echo "<a class='image_container' href='images/".$tab[$i]["id"].".".$tab[$i]["extension"]."'><img src='images/".$tab[$i]["id"].".".$tab[$i]["extension"]."'  class='image'></a>";
 					}
 				}
 			?>
