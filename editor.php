@@ -58,7 +58,6 @@
 		<link href="ui.css" rel="stylesheet" type="text/css">
 		<link href="editor.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<script src="showdown/dist/showdown.js"></script>
 		<script src="editor_selection.js"></script>
 		<script src="editor.js"></script>
 		

@@ -1,5 +1,7 @@
 if (window.getSelection && document.createRange) {
     saveSelection = function(containerEl) {
+
+	try{
         var range = window.getSelection().getRangeAt(0);
         var preSelectionRange = range.cloneRange();
         preSelectionRange.selectNodeContents(containerEl);
@@ -10,6 +12,10 @@ if (window.getSelection && document.createRange) {
             start: start,
             end: start + range.toString().length
         };
+	}
+	finally{
+
+	}
     };
 
     restoreSelection = function(containerEl, savedSel) {
