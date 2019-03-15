@@ -22,44 +22,91 @@ function handleStatistics($pdo,$id){
 	$month="**".date("my");
 	$ip=$_SERVER['REMOTE_ADDR'];
 
-	// Monthly
-	$query=$pdo->prepare(
-	"INSERT IGNORE INTO lightcms_statistics (period,count) VALUES (?,0);");
+	/* 
+
+	Monthly
+
+	*/
+	// Create monthly global entry (website visitors) if not exists	
+	$query=$pdo->prepare("
+	INSERT IGNORE INTO lightcms_statistics (period,type,target,count) 
+	VALUES (?,'global',0,0);");
+
 	$query->execute(array($month));
 
+	// Create monthly content entry (content views) if not exists	
+	$query=$pdo->prepare("
+	INSERT IGNORE INTO lightcms_statistics (period,type,target,count) 
+	VALUES (?,'content',?,0);");
+
+	$query->execute(array($month,$id));
+
+	// Check if this IP has been registered this month
 	$query=$pdo->prepare("
 	SELECT COUNT(*) FROM lightcms_visitors WHERE ip=? AND period=?;");
 
 	$query->execute(array($ip,$month));
 	$count=$query->fetchColumn();
 
+	// If not, add it to lightcms_visitors and increment global entry
 	if($count==0){
 		$query=$pdo->prepare("
 		INSERT INTO lightcms_visitors (period,ip) VALUES (?,?);
-		UPDATE lightcms_statistics SET count=count+1 WHERE period=?;");
+	 	UPDATE lightcms_statistics SET count=count+1 WHERE period
+		LIKE ? AND type LIKE 'global';");
 
 		$query->execute(array($month,$ip,$month));
 	}
+
+	// In any case, increment content entry because it is a new view
+	$query=$pdo->prepare("
+	UPDATE lightcms_statistics SET count=count+1 WHERE period LIKE ?
+	AND type LIKE 'content' AND target LIKE ?;");
+
+	$query->execute(array($month,$id));
 	
-	// Daily
-	$query=$pdo->prepare(
-	"INSERT IGNORE INTO lightcms_statistics (period,count) VALUES (?,0);");
+	/* 
+
+	Daily
+
+	*/
+	// Create daily global entry (website visitors) if not exists	
+	$query=$pdo->prepare("
+	INSERT IGNORE INTO lightcms_statistics (period,type,target,count)
+	VALUES (?,'global',0,0);");
 
 	$query->execute(array($day));
+
+	// Create daily content entry (content views) if not exists	
+	$query=$pdo->prepare("
+	INSERT IGNORE INTO lightcms_statistics (period,type,target,count)
+	VALUES (?,'content',?,0);");
+
+	$query->execute(array($day,$id));
 	
+	// Check if this IP has been registered today
 	$query=$pdo->prepare("
 	SELECT COUNT(*) FROM lightcms_visitors WHERE ip=? AND period=?;");
 
 	$query->execute(array($ip,$day));
 	$count=$query->fetchColumn();
 
+	// If not, add it to lightcms_visitors and increment global entry
 	if($count==0){
 		$query=$pdo->prepare("
 		INSERT INTO lightcms_visitors (period,ip) VALUES (?,?);
-		UPDATE lightcms_statistics SET count=count+1 WHERE period=?;");
+		UPDATE lightcms_statistics SET count=count+1 WHERE period LIKE
+		? AND type LIKE 'global';");
 
 		$query->execute(array($day,$ip,$day));
 	}
+
+	// In any case, increment content entry because it is a new view
+	$query=$pdo->prepare("
+	UPDATE lightcms_statistics SET count=count+1 WHERE period LIKE ?
+	AND type LIKE 'content' AND target LIKE ?;");
+
+	$query->execute(array($day,$id));
 }
 
 function getContentById($id){
