@@ -163,7 +163,6 @@ tr:nth-child(even) {
 
 /* CUSTOM TEXT AREA */
 
-
 .textareaInputLabel{
 	color:#ccc;
 }
@@ -189,11 +188,14 @@ tr:nth-child(even) {
 }
 
 /* CUSTOM CHECK BOX */
+
 .checkbox{
 	opacity:0;
 	z-index:3;
 	margin-left:0;
 	margin-right:24px;
+	width:20px;
+	height:20px;
 }
 
 .checkbox_container{
