@@ -79,20 +79,20 @@
 			<div class="dataContainer">
 				Visiteurs aujourd'hui
 				<hr>
-				<h2><?php echo $global[$day]; ?></h2>
+				<h2><?php echo intval($global[$day]); ?></h2>
 			</div>
 
 			<div class="dataContainer">
 				Pages vues aujourd'hui 
 				<hr>
-				<h2><?php echo $todayContentsViews; ?></h2>
+				<h2><?php echo intval($todayContentsViews); ?></h2>
 			</div>
 
 
 			<div class="dataContainer">
 				Visiteurs ce mois-ci
 				<hr>
-				<h2><?php echo $global[$month]; ?></h2>
+				<h2><?php echo intval($global[$month]); ?></h2>
 			</div>
 		</div>
 
@@ -111,12 +111,12 @@
 					</div>
 					<div class="chartRight">
 						<div class="chartContent">
-							<div class="bar _red" style="height:<?php echo 500/$max*$data[5]["value"]; ?>px"></div>
-							<div class="bar _orange" style="height:<?php echo 500/$max*$data[4]["value"]; ?>px"></div>
-							<div class="bar _yellow" style="height:<?php echo 500/$max*$data[3]["value"]; ?>px"></div>
-							<div class="bar _olive" style="height:<?php echo 500/$max*$data[2]["value"]; ?>px"></div>
-							<div class="bar _green" style="height:<?php echo 500/$max*$data[1]["value"]; ?>px"></div>
-							<div class="bar _teal" style="height:<?php echo 500/$max*$data[0]["value"]; ?>px"></div>
+							<div class="bar _red" title="<?php echo $data[5]["value"]; ?>" style="height:<?php echo 500/$max*$data[5]["value"]; ?>px"></div>
+							<div class="bar _orange" title="<?php echo $data[4]["value"]; ?>" style="height:<?php echo 500/$max*$data[4]["value"]; ?>px"></div>
+							<div class="bar _yellow" title="<?php echo $data[3]["value"]; ?>" style="height:<?php echo 500/$max*$data[3]["value"]; ?>px"></div>
+							<div class="bar _olive" title="<?php echo $data[2]["value"]; ?>" style="height:<?php echo 500/$max*$data[2]["value"]; ?>px"></div>
+							<div class="bar _green" title="<?php echo $data[1]["value"]; ?>" style="height:<?php echo 500/$max*$data[1]["value"]; ?>px"></div>
+							<div class="bar _teal" title="<?php echo $data[0]["value"]; ?>" style="height:<?php echo 500/$max*$data[0]["value"]; ?>px"></div>
 
 						</div>
 							<div class="legendx">

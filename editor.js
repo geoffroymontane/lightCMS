@@ -1,6 +1,130 @@
 var selectedImage="";
 var saved=true;
 
+var containers=[];
+var containerId=0;
+var elementId=0;
+var selectedElementId=null;
+
+
+setInterval(function(){
+	selectedElementId=document.activeElement.id;
+},100);
+
+class Container{
+	constructor(classPC,classMobile){
+		this.classPC=classPC;
+		this.classMobile=classMobile;
+		this.elements=[];
+		this.id=containerId;
+		containerId++;
+	}	
+
+	setClassPC(classPC){
+		this.classPC=classPC;
+	}
+
+	setClassMobile(classMobile){
+		this.classMobile=classMobile;
+	}
+
+	getEditorHTML(){
+		var html="<div id='"+this.id+"' class='"+this.classPC+" "+this.classMobile+"'>";
+		for(var i=0;i<this.elements.length;i++){
+				html=html+this.elements[i].getEditorHTML();	
+		}
+		html=html+"</div><hr>";
+		return html;
+	}
+}
+
+class Element{
+	constructor(classPC,classMobile,orderPC,orderMobile){
+		this.classPC=classPC;	
+		this.classMobile=classMobile;	
+		this.orderPC=orderPC;	
+		this.orderMobile=orderMobile;	
+		this.content="";
+		this.id=elementId;
+		elementId++;
+	}
+
+	setContent(content){
+		this.content=content;
+	}
+
+	getContent(content){
+		return this.content;
+	}
+
+	getEditorHTML(){
+		var html="<div id='"+this.id+"' contenteditable='true' class='"+this.classPC+" "+this.classMobile+" "+this.orderPC+" "+this.orderMobile+"'>"+this.content+"</div>";
+		return html;
+	}
+	
+}
+
+function getContainerIndexFromElementId(id){
+	for(var i=0;i<containers.length;i++){
+		for(var n=0;n<containers[i].elements.length;n++){
+			if(containers[i].elements[n].id==id){
+				console.log(i);
+				return i;
+			}
+		}
+	}
+	return null;
+}
+
+function moveUpContainer(){
+	if(selectedElementId!=null){
+		var index=getContainerIndexFromElementId(selectedElementId);
+		if(index!=null){
+			if(index!=0){
+				console.log(index);
+				var container=containers[index];
+				containers[index]=containers[index-1];
+				containers[index-1]=container;
+			}
+		}
+	}
+}
+
+function moveDownContainer(){
+	if(selectedElementId!=null){
+		var index=getContainerIndexFromElementId(selectedElementId);
+		if(index!=null){
+			if(index<containers.length-1){
+				var container=containers[index];
+				containers[index]=containers[index+1];
+				containers[index+1]=container;
+			}
+		}
+	}
+}
+
+function buildEditorHTML(){
+	var html="";
+	for(var i=0;i<containers.length;i++){
+		html=html+containers[i].getEditorHTML();
+	}
+	document.getElementById("editorTextContent").innerHTML=html;
+}
+
+function insertContainer(){
+	var container=new Container("containerRowPC","containerColumnMobile");
+	var element1=new Element("sixElementsPC","twelveElementsMobile","order1PC","order1Mobile");
+	var element2=new Element("sixElementsPC","twelveElementsMobile","order2PC","order2Mobile");
+	element1.setContent("Contenu");
+	element2.setContent("Contenu");
+	container.elements.push(element1,element2);
+	containers.push(container);
+	buildEditorHTML();
+
+}
+
+
+
 function save(){
 	saved=true;
 	var html=document.getElementById("editorTextContent").innerHTML;
@@ -138,6 +262,14 @@ function showLinkPrompt(){
 function hideLinkPrompt(){
 	document.getElementById("linkPrompt").style.display="none";
 	restoreCursorPosition();
+}
+
+function showAddContainerPrompt(){
+
+}
+
+function hideAddContainerPrompt(){
+
 }
 
 function insertLink(){

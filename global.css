@@ -5,11 +5,6 @@ body{
 	padding:0px;
 }
 
-blockquote{
-	border-left:5px solid #ccc;
-	padding-left:16px;
-}
-
 h1{
 	font-size:2em;
 }
@@ -26,7 +21,336 @@ h3{
 	font-size:1.1em;
 }
 
-/* IMAGES */
+hr{
+	border:1px dotted black;
+}
+
+/*
+
+SKELETON
+
+*/
+
+.containerRowPC{
+	display:flex;
+	flex-direction:row;
+	width:100%;
+}
+.containerColumnPC{
+	display:flex;
+	flex-direction:column;
+	width:100%;
+}
+.oneElementPC{
+	width:4.6%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.twoElementsPC{
+	width:13.3%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.threeElementsPC{
+	width:22%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border:1px dotted #ccc;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.fourElementsPC{
+	width:30.6%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.fiveElementsPC{
+	width:39.3%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.sixElementsPC{
+	width:50%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.sevenElementsPC{
+	width:56.6%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.eightElementsPC{
+	width:65.3%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.nineElementsPC{
+	width:74%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.tenElementsPC{
+	width:82.6%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.elevenElementsPC{
+	width:91.3%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+.twelveElementsPC{
+	width:100%;
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-left:1px dotted #ccc;
+	border-right:1px dotted #ccc;
+}
+
+.order1PC{
+	order:1;	
+}
+.order2PC{
+	order:2;	
+}
+.order3PC{
+	order:3;	
+}
+.order4PC{
+	order:4;	
+}
+.order5PC{
+	order:5;	
+}
+.order6PC{
+	order:6;	
+}
+.order7PC{
+	order:7;	
+}
+.order8PC{
+	order:8;	
+}
+.order9PC{
+	order:9;	
+}
+.order10PC{
+	order:10;	
+}
+.order11PC{
+	order:11;	
+}
+.order12PC{
+	order:12;	
+}
+
+@media screen and (max-width:1000px){
+	.containerRowMobile{
+		display:flex;
+		flex-direction:row;
+		width:100%;
+	}
+	.containerColumnMobile{
+		display:flex;
+		flex-direction:column;
+		width:100%;
+	}
+	.oneElementMobile{
+		width:4.6%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.twoElementsMobile{
+		width:13.3%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.threeElementsMobile{
+		width:22%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.fourElementsMobile{
+		width:30.6%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.fiveElementsMobile{
+		width:39.3%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.sixElementsMobile{
+		width:48%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.sevenElementsMobile{
+		width:56.6%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.eightElementsMobile{
+		width:65.3%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.nineElementsMobile{
+		width:74%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.tenElementsMobile{
+		width:82.6%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.elevenElementsMobile{
+		width:91.3%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+	.twelveElementsMobile{
+		width:100%;
+		padding-left:8px;
+		padding-right:8px;
+		padding-top:8px;
+		padding-bottom:8px;
+		border-top:1px dotted #ccc;
+		border-bottom:1px dotted #ccc;
+	}
+
+	.order1Mobile{
+		order:1;	
+	}
+	.order2Mobile{
+		order:2;	
+	}
+	.order3Mobile{
+		order:3;	
+	}
+	.order4Mobile{
+		order:4;	
+	}
+	.order5Mobile{
+		order:5;	
+	}
+	.order6Mobile{
+		order:6;	
+	}
+	.order7Mobile{
+		order:7;	
+	}
+	.order8Mobile{
+		order:8;	
+	}
+	.order9Mobile{
+		order:9;	
+	}
+	.order10Mobile{
+		order:10;	
+	}
+	.order11Mobile{
+		order:11;	
+	}
+	.order12Mobile{
+		order:12;	
+	}
+}
+/* 
+
+IMAGES 
+
+*/
+
 img{
 	margin-top:16px;
 	margin-bottom:16px;
@@ -35,7 +359,52 @@ img{
 	position:relative;
 }
 
-/* IMAGE BEHAVIOR */
+/* 
+
+IMAGE BEHAVIOR 
+
+*/
+
+.default{
+	max-width:100%;
+}
+
+.full{
+	width:100%;
+}
+
+.onehalf{
+	max-width:50%;
+}
+
+.onethird{
+	max-width:33%;
+}
+
+.twothirds{
+	max-width:66%;
+
+
+/* 
+
+IMAGES 
+
+*/
+
+img{
+	margin-top:16px;
+	margin-bottom:16px;
+}
+.img_container{
+	position:relative;
+}
+
+/* 
+
+IMAGE BEHAVIOR 
+
+*/
+
 .default{
 	max-width:100%;
 }
@@ -216,7 +585,11 @@ black{
 }
 
 
-/* TEXT ALIGNMENT */
+/* 
+
+TEXT ALIGNMENT 
+
+*/
 
 center{
 	display:block;

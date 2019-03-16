@@ -329,8 +329,18 @@
 						<input type="hidden" name="title" value="" id="titleEditorSaveForm"/>
 						<input type="hidden" name="contentId" value="<?php echo $id; ?>"/>
 						<input type="hidden" name="html" id="html" value=""/>
-						<div id="editorTextContent" onchange="whenchange();" onKeyUp="whenchange();" contenteditable="true">
+						<div id="editorTextContent">
 							<?php echo $html; ?>
+						</div>
+						<div class="button_red" onclick="insertContainer()">
+							<i class="fas fa-plus"></i>
+							&nbsp;Insérer un nouveau conteneur						
+						</div>
+						<div class="button_grey" onclick="moveUpContainer()">
+							<i class="fas fa-arrow-up"></i>
+						</div>
+						<div class="button_grey" onclick="moveDownContainer()">
+							<i class="fas fa-arrow-down"></i>
 						</div>
 					</form>
 				</div>
