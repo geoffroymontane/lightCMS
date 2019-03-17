@@ -6,9 +6,13 @@ var containerId=0;
 var elementId=0;
 var selectedElementId=null;
 
+var draggedContainerId=null;
+
 
 setInterval(function(){
-	selectedElementId=document.activeElement.id;
+	if(document.activeElement.id.substring(0,4)=="elem"){
+		selectedElementId=document.activeElement.id.substring(4);
+	}
 },100);
 
 class Container{
@@ -29,7 +33,7 @@ class Container{
 	}
 
 	getEditorHTML(){
-		var html="<div id='"+this.id+"' class='"+this.classPC+" "+this.classMobile+"'>";
+		var html="<div id='cont"+this.id+"' class='container "+this.classPC+" "+this.classMobile+"' draggable='true' ondragstart='dragContainer("+this.id+",event)' ondrop='dropContainer("+this.id+",event)' ondragover='allowDrop(event)'>";
 		for(var i=0;i<this.elements.length;i++){
 				html=html+this.elements[i].getEditorHTML();	
 		}
@@ -58,17 +62,17 @@ class Element{
 	}
 
 	getEditorHTML(){
-		var html="<div id='"+this.id+"' contenteditable='true' class='"+this.classPC+" "+this.classMobile+" "+this.orderPC+" "+this.orderMobile+"'>"+this.content+"</div>";
+		var html="<div id='elem"+this.id+"' contenteditable='true' onkeyup='setElementContent("+this.id+");' class='element "+this.classPC+" "+this.classMobile+" "+this.orderPC+" "+this.orderMobile+"' draggable='true'>"+this.content+"</div>";
 		return html;
 	}
 	
 }
 
+
 function getContainerIndexFromElementId(id){
 	for(var i=0;i<containers.length;i++){
 		for(var n=0;n<containers[i].elements.length;n++){
 			if(containers[i].elements[n].id==id){
-				console.log(i);
 				return i;
 			}
 		}
@@ -76,18 +80,59 @@ function getContainerIndexFromElementId(id){
 	return null;
 }
 
+function getContainerIndexFromContainerId(id){
+	for(var i=0;i<containers.length;i++){
+		if(containers[i].id==id){
+			return i;
+		}
+	}
+	return null;
+}
+
+function getElementFromElementId(id){
+	for(var i=0;i<containers.length;i++){
+		for(var n=0;n<containers[i].elements.length;n++){
+			if(containers[i].elements[n].id==id){
+				return containers[i].elements[n];
+			}
+		}
+	}
+	return null;
+}
+
+function setElementContent(elementId){
+	var newContent=document.getElementById('elem'+elementId).innerHTML;	
+	var element=getElementFromElementId(elementId);
+	element.setContent(newContent);
+}
+
+function buildEditorHTML(){
+	var html="";
+	for(var i=0;i<containers.length;i++){
+		html=html+containers[i].getEditorHTML();
+	}
+	document.getElementById("editorTextContent").innerHTML=html;
+}
+
+
+/*
+
+Elements and containers handling
+
+*/
+
 function moveUpContainer(){
 	if(selectedElementId!=null){
 		var index=getContainerIndexFromElementId(selectedElementId);
 		if(index!=null){
 			if(index!=0){
-				console.log(index);
 				var container=containers[index];
 				containers[index]=containers[index-1];
 				containers[index-1]=container;
 			}
 		}
 	}
+	buildEditorHTML();
 }
 
 function moveDownContainer(){
@@ -101,15 +146,9 @@ function moveDownContainer(){
 			}
 		}
 	}
+	buildEditorHTML();
 }
 
-function buildEditorHTML(){
-	var html="";
-	for(var i=0;i<containers.length;i++){
-		html=html+containers[i].getEditorHTML();
-	}
-	document.getElementById("editorTextContent").innerHTML=html;
-}
 
 function insertContainer(){
 	var container=new Container("containerRowPC","containerColumnMobile");
@@ -123,7 +162,27 @@ function insertContainer(){
 
 }
 
+function dragContainer(containerId,event){
+	if(event.target.id.substring(0,4)=="cont"){
+		event.dataTransfer.setData("", event.target.id);
+		draggedContainerId=containerId;
+	}
+}
 
+function dropContainer(containerId,event){
+	event.preventDefault();
+	if(draggedContainerId!=null){
+		var currentIndex=getContainerIndexFromContainerId(draggedContainerId);	
+		var destinationIndex=getContainerIndexFromContainerId(containerId);
+		containers.splice(destinationIndex,0,containers.splice(currentIndex,1)[0]);
+	}
+	draggedContainerId=null;
+	buildEditorHTML();
+}
+
+function allowDrop(event){
+	event.preventDefault();
+}
 
 function save(){
 	saved=true;
@@ -227,7 +286,9 @@ function showImgPrompt(){
 function showImgPrompt_(){
 	document.getElementById("imgPrompt").style.display="block";
 	document.getElementById("imgPicker").style.display="none";
-	document.getElementById("imgPromptColumn1").style.display="block"; document.getElementById("imgPromptColumn2").style.display="block"; document.getElementById("imgPrompt").focus();
+	document.getElementById("imgPromptColumn1").style.display="block";
+	document.getElementById("imgPromptColumn2").style.display="block";	
+	document.getElementById("imgPrompt").focus();
 }
 
 function hideImgPrompt(){
