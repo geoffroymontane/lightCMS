@@ -16,3 +16,12 @@ L'intégralité de ces étapes devraient être inutiles sur un serveur web préc
 *  Ajouter l'option souligner
 *  Comment aligner deux images horizontalement ?
 *  Vérification de la qualité du mot de passe
+
+## Screenshots
+
+![](2019-04-13-153705_1920x1080_scrot.png)
+![](2019-04-13-154058_1920x1080_scrot.png)
+![](2019-04-13-154217_1920x1080_scrot.png)
+![](2019-04-13-154451_1920x1080_scrot.png)
+![](2019-04-13-154610_1920x1080_scrot.png)
+
